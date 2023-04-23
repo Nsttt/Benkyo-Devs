@@ -30,7 +30,7 @@ function props() {
       <main className="card">
         <div className="game.finished">
           <span></span>
-          <button onClick={() = (window.location.href = "/")}>Volver a jugar</button>
+          <button onClick={() => (window.location.href = "/")}>Volver a jugar</button>
         </div>
         </main>
     )
