@@ -1,11 +1,6 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import Header from "../components/header";
-
-// TODO: *** eliminar dependencias que no se estén usando
-import Image from "next/image";
-import styles from "carol-88/styles/Home.module.css";
-const inter = Inter({ subsets: ["latin"] });
+import Header from "../components/header/Header";
+import Card from "../components/card/Card";
 
 export default function Home() {
 	return (
@@ -19,7 +14,18 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Header/>
+
+			<body>
+				<header>
+					<Header />
+				</header>
+
+				<main>
+					<Card />
+				</main>
+
+				<footer>//footer</footer>
+			</body>
 		</>
 	);
 }
