@@ -1,5 +1,3 @@
-import styles from "./difficult.module.css";
-
 const Difficult = () => (
 	<img
 		src="https://i.imgur.com/7I9Was5.png"
