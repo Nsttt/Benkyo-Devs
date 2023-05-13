@@ -1,12 +1,11 @@
-// import Logo from "./logo"
-// import UserInfo from "./../user/user-info"
+import UserInfo from "./../user/user-info"
+import Difficult from "./difficult/Difficult";
 
 const Header = () => {
     return (
-        <header style={{display:'flex'}}>
-            <h1>Header</h1>
-            {/* <UserInfo /> */}
-            {/* <Logo /> */}
+        <header className="flex-row justify-between flex-wrap fixed sm:flex-col">
+            <UserInfo />
+            <Difficult />
         </header>
     )
 }
