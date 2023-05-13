@@ -1,31 +1,11 @@
 const express = require('express');
 
 const app = express();
+const { getCard, getIdCard } = require('./controllers/user/card/cards');
 
-const listTasks = async () => {
-    const tasks = await readFile('./preguntas.json', 'utf8');
+app.get('/card/:id', getIdCard); // enpoint para ver cards por id
+app.get('/', getCard); // enpoint para ver todas las cards
 
-    console.log(tasks);
-
-    const date = JSON.parse(tasks);
-    console.log(date);
-
-    return date;
-};
-const getTasks = async (req, res, next) => {
-    try {
-        const newTasks = await listTasks();
-        res.json(newTasks);
-    } catch (err) {
-        next(err);
-    }
-};
-
-app.get('/', getTasks);
-
-app.get('/', (req, res) => {
-    res.send('¡Hola mundo!');
-});
 app.listen(4000, () => {
     console.log('Servidor iniciado en el puerto 4000');
 });
