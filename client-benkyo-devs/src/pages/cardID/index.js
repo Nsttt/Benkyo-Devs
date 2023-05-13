@@ -20,7 +20,7 @@ const DetailCard = ({ datos }) => {
 
 export async function getStaticProps() {
   // Fetch data from external API
-  const res = await fetch(`${process.env.REACT_APP_API}`);
+  const res = await fetch(`http://127.0.0.1:4000/`);
   const datos = await res.json();
 
   console.log(datos);
