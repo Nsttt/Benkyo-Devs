@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const { getCard, getIdCard } = require('./controllers/card/cards');
+const { getCard, getIdCard } = require('./controllers/user/card/cards');
 
 app.get('/card/:id', getIdCard); // enpoint para ver cards por id
 app.get('/', getCard); // enpoint para ver todas las cards

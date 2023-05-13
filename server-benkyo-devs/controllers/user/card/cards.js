@@ -1,4 +1,4 @@
-const { listQuestions } = require('../../helpers');
+const { listQuestions } = require('../../../helpers');
 
 const getCard = async (req, res, next) => {
     try {
