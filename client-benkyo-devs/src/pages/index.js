@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
       <Header />
       <main></main>
-      <footer>//footer</footer>
+      {/* <footer>footer</footer> */}
     </>
   );
 }
