@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Header from "../components/header/Header";
+import Header from "../components/header/header";
 import Card from "../components/card/Card";
 
 export default function Home() {
@@ -13,10 +13,11 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link href="/dist/output.css" rel="stylesheet"></link>
       </Head>
       <Header />
       <main></main>
-      <footer>//footer</footer>
+      {/* <footer>footer</footer> */}
     </>
   );
 }
