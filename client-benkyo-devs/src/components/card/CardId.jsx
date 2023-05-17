@@ -1,7 +1,6 @@
 const CardId = ({ datos }) => {
-  console.log(datos);
   return (
-    <section class="bg-card">
+    <section class="bg-blue-400 p-4 m-4 rounded-xl">
       <h1>CARD {datos.id}</h1>
       <p>{datos.pregunta}</p>
       <p>{datos.opciones[1]}</p>
