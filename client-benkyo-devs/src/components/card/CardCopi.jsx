@@ -13,17 +13,17 @@ const CardCopi = () => {
               key={dato.id}
               className="flex items-center justify-center h-screen  "
             >
-              <section className="felx flex-col flex items-center justify-center  bg-bg-card w-w-card h-h-card rounded-card ">
+              <section className="felx flex-col flex items-center justify-center  bg-cyan-300 w-96-44 h-80 rounded-lg">
                 <h1 className="text-blue-600 mb-10">CARD {dato.id}</h1>
                 <p className="mb-10">{dato.pregunta}</p>
                 <form className="">
                   <button
                     type="button"
-                    className="bg-bg-btn text-f-sz-textcard w-w-btn h-h-btn  mx-10  border-solid border-2  rounded-card"
+                    className="bg-white text-2xl w-60 h-24 mx-10  border-solid border-2  rounded-lg"
                   >
                     {dato.opciones[1]}
                   </button>
-                  <button className="bg-bg-btn text-f-sz-textcard w-w-btn h-h-btn mx-10 w-btn border-solid border-2  rounded-card ">
+                  <button className="bg-white text-2xl w-60 h-24 mx-10  border-solid border-2  rounded-lg">
                     {dato.opciones[0]}
                   </button>
                 </form>
@@ -31,9 +31,6 @@ const CardCopi = () => {
                 {/* <p>{datos.respuesta}</p> */}
               </section>
             </div>
-            // <li key={dato.id}>
-            //   <Card dato={dato} />;
-            // </li>
           );
         })}
     </ul>
