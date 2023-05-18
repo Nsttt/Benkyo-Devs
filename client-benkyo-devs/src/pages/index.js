@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "../components/header/Header";
 import CardCopi from "carol-88/components/card/CardCopi";
+import NextCard from "carol-88/components/card/button-next-card/next-card";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <main>
         <CardCopi />
+        <NextCard/>
       </main>
       <footer>//footer</footer>
     </>
