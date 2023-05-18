@@ -1,5 +1,5 @@
-const UserAvatar = ({ url }) => {
-	return <img src={url} alt="Foto de usuario" width="100" heigth="100" />;
+const UserAvatar = ({ avatar }) => {
+	return <img src={avatar} alt="Foto de usuario" width="100" heigth="100" />;
 };
 
 export default UserAvatar;

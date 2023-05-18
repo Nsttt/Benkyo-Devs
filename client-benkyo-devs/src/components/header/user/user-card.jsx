@@ -1,8 +1,8 @@
-const UserCard = () => {
+const UserCard = ({name, languages}) => {
     return (
         <div>
-            <h5>User Name</h5>
-            <p>JavaScript, SQL, Python</p>
+            <h5>{name}</h5>
+            <p>{languages}</p>
         </div>
     )
 }
