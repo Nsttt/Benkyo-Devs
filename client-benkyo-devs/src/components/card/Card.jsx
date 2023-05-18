@@ -1,13 +1,32 @@
-const Card = ({ dato }) => {
+import { useState } from "react";
+import CardCopi from "carol-88/components/card/CardCopi";
+import NextCard from "carol-88/components/card/button-next-card/next-card";
+
+import datos from "../../../mocks/questions.json";
+
+const Card = () => {
+
+  const [indexCardCurrent, setIndexCardCurrent] = useState(0);
+  const data = datos.faciles[indexCardCurrent];
+
+  const handleNextCard = () => {
+    const nextIndexCard = indexCardCurrent + 1;
+
+    if(nextIndexCard >= datos.faciles.length) {
+      alert('No hay más preguntas');
+      return;
+    }
+
+    setIndexCardCurrent(nextIndexCard);
+  };
+
+  if(!data) return <p>Cargando...</p>
+
   return (
-    <>
-      <h1>{dato.id}</h1>
-      <p>{dato.pregunta}</p>
-      <p>{dato.opciones[1]}</p>
-      <p>{dato.opciones[0]}</p>
-      <p>{dato.respuesta}</p>
-      <button>siguiente Card</button>
-    </>
+    <div className="flex flex-col items-center justify-content">
+      <CardCopi data={data} />
+      <NextCard handleClick={handleNextCard} />
+    </div>
   );
 };
 

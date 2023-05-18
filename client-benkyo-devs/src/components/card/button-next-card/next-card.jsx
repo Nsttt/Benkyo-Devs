@@ -1,10 +1,11 @@
 import React from 'react'
 
-function NextCard() {
+function NextCard({ handleClick }) {
   return (
-    
-    <button className='flex justify-center'>
-      <img src='/img/arrowimg.png' alt='flecha siguiente tarjeta'/>
+    <button 
+      onClick={handleClick}
+      className='flex justify-center items-center border-2 border-blue-500 p-3 rounded-xl w-40'>
+      <img src={'img/arrowimg.webp'} width={100} />
     </button>
   
   )
