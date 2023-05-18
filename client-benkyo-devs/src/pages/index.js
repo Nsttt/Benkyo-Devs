@@ -3,9 +3,7 @@ import Head from "next/head";
 import Header from "../components/header/Header";
 
 import CardCopi from "carol-88/components/card/CardCopi";
-import Header from "../components/header/header";
-
-
+//import Header from "../components/header/header";
 
 export default function Home() {
   return (
@@ -25,7 +23,6 @@ export default function Home() {
         <CardCopi />
       </main>
       <footer>//footer</footer>
-     
     </>
   );
 }
