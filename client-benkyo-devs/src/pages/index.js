@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "../components/header/Header";
 
 import CardCopi from "carol-88/components/card/CardCopi";
+import NextCard from "carol-88/components/card/button-next-card/next-card";
 //import Header from "../components/header/header";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
 
       <main>
         <CardCopi />
+        <NextCard/>
       </main>
       <footer>//footer</footer>
     </>

@@ -2,10 +2,11 @@ import React from 'react'
 
 function NextCard() {
   return (
-    <>
-    <p>button next card</p>
-    </>
-
+    
+    <button className='flex justify-center'>
+      <img src='/img/arrowimg.png' alt='flecha siguiente tarjeta'/>
+    </button>
+  
   )
 }
 
