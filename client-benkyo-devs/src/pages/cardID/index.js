@@ -1,4 +1,4 @@
-import Card from "carol-88/components/card/Card";
+import Card from "../../components/card/Card";
 
 const DetailCard = ({ datos }) => {
   console.log(datos);
@@ -7,10 +7,10 @@ const DetailCard = ({ datos }) => {
     <ul>
       <h1>Card</h1>
       {datos &&
-        datos.easy.map((dato) => {
+        datos.easy.map((datos) => {
           return (
-            <li key={dato.id}>
-              <Card dato={dato} />;
+            <li key={datos.id}>
+              <Card dato={datos} />;
             </li>
           );
         })}

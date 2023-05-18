@@ -9,18 +9,19 @@ const UserInfo = () => {
     useEffect(() => {
         setUser({
             name: 'Julio',
+            surname: 'Iglesias',
             languages: "JavaScript",
-            avatar: 'https://i.imgur.com/8Km9tLL.png'
+            avatar: 'https://source.unsplash.com/random/400x400/?person'
         });
     }, [])
 
     if(!user) return;
 
     return (
-        <>
+        <section className="flex p-5 w-60 h-30 p-30 gap-2">
             <UserAvatar avatar={user.avatar} />
-            <UserCard name={user.name} languages={user.languages}/>
-        </>
+            <UserCard name={user.name} surname={user.surname} languages={user.languages}/>
+        </section>
     )
 }
 

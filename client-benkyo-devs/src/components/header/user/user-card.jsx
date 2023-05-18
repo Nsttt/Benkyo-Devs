@@ -1,10 +1,9 @@
-const UserCard = ({name, languages}) => {
+const UserCard = ({name, surname, languages}) => {
     return (
-        <div>
-            <h5>{name}</h5>
-            <p>{languages}</p>
-        </div>
+        <section className="flex flex-col p-1">
+            <p className="text-blue-500 text-sm">{name} {surname}</p>
+            <p className="text-xs">{languages}</p>
+        </section>
     )
 }
-
 export default UserCard
