@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "../components/header/Header";
-import Card from "../components/card/Card";
+
+import CardCopi from "carol-88/components/card/CardCopi";
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main></main>
+      <main>
+        <CardCopi />
+      </main>
       <footer>//footer</footer>
     </>
   );
