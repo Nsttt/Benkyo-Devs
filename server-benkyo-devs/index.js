@@ -27,6 +27,12 @@ const LANGUAGES_MOCK = [
         description: 'Python is an interpreted, high-level and general-purpose programming language.',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/480px-Python-logo-notext.svg.png',
     },
+    {
+        id: 4,
+        name: 'PHP',
+        description: 'Python is an interpreted, high-level and general-purpose programming language.',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/480px-Python-logo-notext.svg.png',
+    },
 ];
 
 app.get('/api/languages', (req, res) => {

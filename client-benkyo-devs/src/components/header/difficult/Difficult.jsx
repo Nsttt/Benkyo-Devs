@@ -1,11 +1,17 @@
-const Difficult = () => (
-	<img
-		src="https://i.imgur.com/7I9Was5.png"
-		alt="Logo de Benkyo, un gatito saludando 
-    con un texto Hi students con el color de la dificultad elegida"
-		width="100"
-		heigth="100"
-	/>
-);
+const Difficult = () => {
+  return (
+    <section>
+      <button>Low</button>
+      <button>Medium</button>
+      <button>Hard</button>
+      <img
+        src="img/DificultadBaja.png"
+        alt="Logo de Benkyo, dificultad baja"
+        width="100"
+        height="100"
+      />
+    </section>
+  );
+};
 
 export default Difficult;

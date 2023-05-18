@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Header from "../components/header/Header";
-
+import CardCopi from "carol-88/components/card/CardCopi";
 
 export default function Home() {
   return (
@@ -16,9 +16,9 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-      
+        <CardCopi />
       </main>
-      {/* <footer>footer</footer> */}
+      <footer>//footer</footer>
     </>
   );
 }
