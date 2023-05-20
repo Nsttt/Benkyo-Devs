@@ -41,7 +41,7 @@ const CardCopi = ({ data }) => {
       <section className="flex flex-col flex items-center justify-center bg-cyan-300 rounded-lg mb-3 p-3">
         <p className="mb-10">{pregunta}</p>
         <form className="flex">
-          <CardCopiAwser opcion={opcion} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted} />
+          <CardCopiAwser opcion={opciones} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted} />
         </form>
         {/* <p>{datos.respuesta}</p> */}
       </section>
