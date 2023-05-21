@@ -1,14 +1,6 @@
-const { listQuestions } = require('../../../helpers');
+const { listQuestions } = require('../helpers/helpers');
 
-const getCard = async (req, res, next) => {
-    try {
-        const newTasks = await listQuestions();
-        res.json(newTasks);
-    } catch (err) {
-        next(err);
-    }
-};
-const getIdCard = async (req, res, next) => {
+const getCardByIdController = async (req, res, next) => {
     try {
         const { id } = req.params;
         const datos = await listQuestions();
@@ -24,6 +16,5 @@ const getIdCard = async (req, res, next) => {
 };
 
 module.exports = {
-    getCard,
-    getIdCard,
+    getCardByIdController,
 };

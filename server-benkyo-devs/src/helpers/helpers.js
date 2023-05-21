@@ -1,6 +1,8 @@
-const { readFile } = require('fs').promises;
-
-//const fs = require('fs');
+const generateError = (message, status) => {
+    const error = new Error(message);
+    error.httpStatus = 400;
+    throw error;
+}
 
 const listQuestions = async () => {
     const tasks = await readFile('./questions.json', 'utf8');
@@ -14,5 +16,6 @@ const listQuestions = async () => {
 };
 
 module.exports = {
+    generateError,
     listQuestions,
-};
+}
