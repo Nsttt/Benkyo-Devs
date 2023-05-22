@@ -2,12 +2,17 @@ import { useState } from 'react'
 
 const COLORS_ACTIONS = {
   success: 'bg-green-400',
-  error: 'bg-red-400'
-}
+  error: 'bg-red-400',
+};
+let color = 'bg-white';
+const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted })  => {
+console.log("linea 9", opcion);
+  //let color = 'bg-white';
 
-let color = 'bg-white'
 
-const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted }) => {
+
+
+
   const handleClick = () => {
     setEvaluted(true)
     setTimeout(() => {
@@ -23,7 +28,7 @@ const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted }) => {
     <button
       onClick={() => handleClick()}
       type="button"
-      className={`${evaluted ? color : 'bg-white'} text-2xl w-60 h-24 mx-10  border-solid border-2  rounded-lg`}>
+      className={`${evaluted? color: 'bg-white'} text-2xl w-60 h-24 mx-10  border-solid border-2  rounded-lg`}>
       {opcion}
     </button>
   )
