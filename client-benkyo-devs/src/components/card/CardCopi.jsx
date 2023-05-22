@@ -6,12 +6,13 @@ const COLORS_ACTIONS = {
 };
 let color = 'bg-white';
 const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted })  => {
-console.log("linea 9", opcion);
+
   //let color = 'bg-white';
 
  const handleClick = () => {
+  setEvaluted(true)
     setTimeout(() => {
-      setEvaluted(true)
+      setEvaluted(false)
     }, 2000)
   }
 
