@@ -1,4 +1,4 @@
-import Difficult from "./difficult/difficult";
+import Difficult from "./difficult/Difficult";
 import UserInfo from "./user/user-info";
 
 const Header = () => {

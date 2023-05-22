@@ -4,12 +4,12 @@ const COLORS_ACTIONS = {
   success: 'bg-green-400',
   error: 'bg-red-400',
 };
-
+let color = 'bg-white';
 const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted })  => {
+console.log("linea 9", opcion);
+  //let color = 'bg-white';
 
-  let color = 'bg-white';
-
-  const handleClick = () => {
+ const handleClick = () => {
     setTimeout(() => {
       setEvaluted(true)
     }, 2000)
@@ -23,7 +23,7 @@ const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted })  => {
     <button 
       onClick={() => handleClick()}
       type="button"
-      className={`${color} text-2xl w-60 h-24 mx-10  border-solid border-2  rounded-lg`}>
+      className={`${evaluted? color: 'bg-white'} text-2xl w-60 h-24 mx-10  border-solid border-2  rounded-lg`}>
       {opcion}
     </button>
   )
@@ -31,17 +31,18 @@ const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted })  => {
 
 const CardCopi = ({ data }) => {
 
+  console.log("linea 34", data);
   if(!data) return <p>Error</p>
-
   const { id, pregunta, opciones, respuesta } = data;
   const [evaluted, setEvaluted] = useState(false);
-
+  console.log("opcion:", opciones, pregunta);
   return (
     <div key={id} className="flex items-center justify-center">
       <section className="flex flex-col flex items-center justify-center bg-cyan-300 rounded-lg mb-3 p-3">
         <p className="mb-10">{pregunta}</p>
         <form className="flex">
-          <CardCopiAwser opcion={opcion} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted} />
+          <CardCopiAwser opcion={opciones[0]} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted}  />
+          <CardCopiAwser opcion={opciones[1]} respuesta={respuesta} evaluted={evaluted}  setEvaluted={setEvaluted} />
         </form>
         {/* <p>{datos.respuesta}</p> */}
       </section>
