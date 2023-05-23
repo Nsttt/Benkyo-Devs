@@ -13,7 +13,6 @@ const Card = ({ dato }) => {
       <p>{dato.pregunta}</p>
       <p>{dato.opciones[1]}</p>
       <p>{dato.opciones[0]}</p>
-      <p>{dato.respuesta}</p>
 
       <div
         className={`card ${isFlipped ? "flipped" : ""}`}
@@ -29,4 +28,3 @@ const Card = ({ dato }) => {
 };
 
 export default Card;
-// crear efecto reverso en este archivo
