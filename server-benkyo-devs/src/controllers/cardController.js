@@ -3,13 +3,13 @@ const { listQuestions } = require('../helpers/helpers');
 const getCardByIdController = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const datos = await listQuestions();
-        console.log(datos.easy);
-        const datoFound = datos.easy.find(function (dato) {
-            return dato.id == id;
+        const data = await listQuestions();
+        console.log(data.easy);
+        const dataFound = data.easy.find(function (data) {
+            return data.id == id;
         });
         // console.log(datos);
-        res.json(datoFound);
+        res.json(dataFound);
     } catch (err) {
         next(err);
     }

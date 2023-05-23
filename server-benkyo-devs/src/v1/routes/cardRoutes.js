@@ -4,6 +4,6 @@ const cardController = require('../../controllers/cardController');
 
 router
     .get('/card', cardController.getCardByIdController);
-
+    
     
 module.exports = router;
