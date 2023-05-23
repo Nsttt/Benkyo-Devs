@@ -1,14 +1,14 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { generateError } = require('../helpers/helpers');
-const { createUser } = require('../db/users');
+const { createUser, getUserByEmail, getUserById } = require('../db/users');
 
 const newUserController = async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
 
-        //Aquí aplicaré el helper de Joi
-
         if(!name || !email || !password) {
-            throw generateError('Debes elegir un nombre, un email y una password', 400);
+            throw generateError('Debes enviar un nombre, un email y una password', 400);
         }
 
         const id = await createUser(name, email, password);
@@ -27,9 +27,15 @@ const newUserController = async (req, res, next) => {
 
 const getUserController = async (req, res, next) => {
     try {
+        const { id } = req.params;
+        
+        const user = await getUserById(id);
+
+        console.log(user);
+
         res.send({
-            status: 'error',
-            message: 'Not implemented',
+            status: 'ok',
+            data: user,
         });
     } catch(error) {
         next(error);
@@ -38,12 +44,30 @@ const getUserController = async (req, res, next) => {
 
 
 const loginController = async (req, res, next) => {
-    
-    const {params} = req.body;
-
     try {
+        const {email, password} = req.body;
+
+        if(!email || !password) {
+            throw generateError('Debes enviar un email y una password', 400);
+        }
+
+        const user = await getUserByEmail(email);
+
+        const validPassword = await bcrypt.compare(password, user.password); 
+
+        if(!validPassword) {
+            throw generateError('La contraseña no coincide', 401);
+        }
+
+        const payload = { id: user.id };
+
+        const token = jwt.sign(payload, process.env.SECRET, {
+            expiresIn: '30d',
+        });
+
         res.send({
-            params
+            status: 'ok',
+            data: token,
         });
     } catch(error) {
         next(error);

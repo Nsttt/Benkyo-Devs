@@ -11,8 +11,8 @@ app.use(express.json());                        //Parsea los json recogidos en e
 app.use(morgan('dev'));                         //Registra el tipo de petición HTTP y la muestra por consola
 
 
-app.use("/api/v1/users", v1UserRouter);         //https://api/v1/cards + endpoints en v1CardRouter de la carpeta routes
-app.use("/api/v1/cards", v1CardRouter);
+app.use("/api/v1/user", v1UserRouter);         
+app.use("/api/v1/card", v1CardRouter);         //https://api/v1/cards + endpoints en v1CardRouter de la carpeta routes
 
 
 app.use((error, req, res, next) => {            // Middleware de gestión de errores genéricos

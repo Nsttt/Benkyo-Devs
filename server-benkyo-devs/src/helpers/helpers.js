@@ -6,13 +6,8 @@ const generateError = (message, status) => {
 
 const listQuestions = async () => {
     const tasks = await readFile('./questions.json', 'utf8');
-
-    // console.log(tasks);
-
-    const date = JSON.parse(tasks);
-    // console.log(date);
-
-    return date;
+    const data = JSON.parse(tasks);
+    return data;
 };
 
 module.exports = {
