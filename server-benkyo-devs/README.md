@@ -24,6 +24,7 @@ con una respuesta correcta y otra incorrecta.
 - Card:
   - id
   - question
+  - answer
   - true_answer
   - false_anwser
   
@@ -43,6 +44,10 @@ con una respuesta correcta y otra incorrecta.
 ## Endpoints
 
 - **POST /user**  Registro de usuario ✅
-- **GET /user/:id** Devuelve información de usuario 
-- **POST /login**  Login de usuario (devuelve token) 
-- **GET /card/:id**  Devuelve la tarjeta por id ✅
+- **GET /user/:id** Devuelve información de usuario ✅
+- **POST /login**  Login de usuario (devuelve token) ✅
+- **GET /mysql/:id**  Devuelve la tarjeta por id (questions.json)✅
+- **GET /card/:id**  Devuelve la tarjeta por id (questions.json)✅
+- **GET /user/card/:id**  Devuelve todas las tarjetas relacionadas con el usuario 
+- **POST /deck**  Registra mazo de usuario 
+- **GET /deck/id**  Devuelve mazo de usuario por id
