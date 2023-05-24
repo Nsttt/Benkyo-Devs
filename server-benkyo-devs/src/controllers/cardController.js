@@ -1,20 +1,40 @@
 const { listQuestions } = require('../helpers/helpers');
+const { getCardById } = require('../db/cards');
+
+const getMySQLCardByIdController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        
+        const card = await getCardById(id);
+
+        console.log(card);
+
+        res.send({
+            status: `Card with id ${id} ok`,
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+};
+
+//Desde questions.json
 
 const getCardByIdController = async (req, res, next) => {
     try {
         const { id } = req.params;
         const data = await listQuestions();
-        console.log(data.easy);
         const dataFound = data.easy.find(function (data) {
             return data.id == id;
         });
-        // console.log(datos);
+       
         res.json(dataFound);
-    } catch (err) {
-        next(err);
+    } catch (error) {
+        next(error);
     }
 };
 
+
 module.exports = {
-    getCardByIdController,
+    getCardByIdController, getMySQLCardByIdController,
 };
