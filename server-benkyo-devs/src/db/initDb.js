@@ -46,7 +46,7 @@ async function main() {
         await connection.query(`
             CREATE TABLE IF NOT EXISTS level (
                 id int not null auto_increment primary key,
-                name enum('fácil', 'medio', 'avanzado')
+                name enum('easy', 'intermidate', 'advanced')
             );
         `);
 
@@ -58,7 +58,7 @@ async function main() {
                 id_language int not null,
                 id_level int not null,
                 question varchar(300) not null,
-                answer varchar(500) not null,
+                answer varchar(300) not null,
                 true_answer varchar(300) not null,
                 false_answer varchar(300) not null,
                 foreign key(id_language) references language(id),
