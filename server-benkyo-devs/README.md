@@ -51,3 +51,25 @@ con una respuesta correcta y otra incorrecta.
 - **GET /user/card/:id**  Devuelve todas las tarjetas relacionadas con el usuario 
 - **POST /deck**  Registra mazo de usuario 
 - **GET /deck/id**  Devuelve mazo de usuario por id
+
+## Instalación
+
+- Clonar el repositorio
+
+- Instalar dependencias
+
+```bash
+npm install
+
+
+- Configurar variables de entorno
+
+
+cp .env.example .env
+
+
+- Ejecutar migraciones
+
+
+npm run migrations:reset
+´´´ 
