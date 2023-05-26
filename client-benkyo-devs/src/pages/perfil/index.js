@@ -4,7 +4,7 @@ import React from 'react'
 
 function perfil() {
   return (
-            <div className='grid grid-cols-3 gap-5 grid-rows-4'>
+            <div className='grid grid-cols-3 gap-5 grid-rows-4 p-8'>
             <section id='user' className=''>
                 <UserInfo/>
             </section>
