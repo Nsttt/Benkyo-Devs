@@ -51,3 +51,42 @@ con una respuesta correcta y otra incorrecta.
 - **GET /user/card/:id**  Devuelve todas las tarjetas relacionadas con el usuario 
 - **POST /deck**  Registra mazo de usuario 
 - **GET /deck/id**  Devuelve mazo de usuario por id
+
+## Instalación
+
+- Clonar el repositorio
+
+- Instalar dependencias
+
+  npm install
+
+- Configurar variables de entorno
+
+  cp .env.example .env
+
+- Ejecutar migraciones
+
+  npm run migrations:reset
+ 
+
+## Añadir cards en tu MySQL
+
+- Abre MySQL 
+
+- Añade un query tab
+
+- Inserta:
+
+- create database benkyo
+
+- use benkyo
+
+- copia las tablas del archivo initDB.js
+
+- copia el insertLanguage.sql
+
+- copia insertLevel.sql
+
+- copia insertCards.sql
+
+- ejecuta toda la query 
