@@ -49,7 +49,7 @@ const AboutMe = ({ currentUser }) => {
 
   return (
     <div className='m-4'>
-      <h2 className='text-sky-600 p-1'>About Me</h2>
+      <h2 className='p-1'>About Me</h2>
       {editing ? (
         <div>
           <textarea
@@ -58,14 +58,14 @@ const AboutMe = ({ currentUser }) => {
             onChange={handleInputChange}
             placeholder="Escribe algo sobre tí"
           />
-          <button onClick={handleSaveClick} className='border-2 p-1 bg-rose-100 flex flex-row align-bottom rounded-lg shadow-lg'>Guardar</button>
+          <button onClick={handleSaveClick} className='border-2 p-1 text-white bg-cyan-600 align-bottom rounded-lg shadow-lg float-right mb-2'>Guardar</button>
         </div>
       ) : (
         <div>
           <p className='text-sky-800 p-2'>{aboutText}</p>
-          {currentUser && currentUser.id === profileOwnerId && (
-          <button onClick={handleEditClick} className='border-2 p-1 bg-rose-100 flex flex-row align-bottom rounded-lg shadow-lg justify-items-end'>Modificar</button>
-          )}
+          {/* {currentUser && currentUser.id === profileOwnerId && ( */}
+          <button onClick={handleEditClick} className='border-2 p-1 text-white bg-cyan-600 flex flex-row align-bottom rounded-lg shadow-lg float-right mb-2'>Modificar</button>
+           {/* )} */}
         </div>
       )}
     </div>
