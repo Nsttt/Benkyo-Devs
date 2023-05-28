@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import UserAvatar from './user-avatar'
 import UserCard from './user-card'
+import Link from 'next/link';
+
+
 
 const UserInfo = () => {
 
@@ -18,10 +21,12 @@ const UserInfo = () => {
     if(!user) return;
 
     return (
+        <Link href="/perfil">
         <section className="flex p-5 w-60 h-30 p-30 gap-2">
             <UserAvatar avatar={user.avatar} />
             <UserCard name={user.name} surname={user.surname} languages={user.languages}/>
         </section>
+        </Link>
     )
 }
 
