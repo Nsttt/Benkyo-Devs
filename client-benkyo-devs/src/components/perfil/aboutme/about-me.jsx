@@ -1,22 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AboutMe = () => {
-  const [aboutText, setAboutText] = useState(''); // Estado para almacenar el texto del perfil
-  const [editing, setEditing] = useState(false); // Estado para controlar si se está editando o no
+  const [aboutText, setAboutText] = useState('');
+  const [editing, setEditing] = useState(false);
 
-  // Manejador de cambios en el texto del perfil
+  useEffect(() => {
+    fetchAboutText();
+  }, []);
+
+  const fetchAboutText = async () => {
+    try {
+      const response = await fetch('/api/perfil/about');
+      const data = await response.json();
+      const { text } = data;
+      setAboutText(text);
+    } catch (error) {
+      console.log('Error al obtener el texto del perfil', error);
+    }
+  };
+
+  const saveAboutText = async () => {
+    try {
+      await fetch('/api/perfil/about', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: aboutText })
+      });
+      console.log('Texto del perfil guardado exitosamente');
+    } catch (error) {
+      console.log('Error al guardar el texto del perfil', error);
+    }
+  };
+
   const handleInputChange = (event) => {
     setAboutText(event.target.value);
   };
 
-  // Manejador de clic en el botón "Modificar"
   const handleEditClick = () => {
     setEditing(true);
   };
 
-  // Manejador de clic en el botón "Guardar"
   const handleSaveClick = () => {
     setEditing(false);
+    saveAboutText();
   };
 
   return (
@@ -27,7 +55,7 @@ const AboutMe = () => {
           <textarea
             value={aboutText}
             onChange={handleInputChange}
-            placeholder="Enter your about me text"
+            placeholder="Escribe algo sobre tí"
           />
           <button onClick={handleSaveClick}>Guardar</button>
         </div>
@@ -42,3 +70,4 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
+
