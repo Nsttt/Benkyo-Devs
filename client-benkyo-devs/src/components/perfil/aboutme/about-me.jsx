@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const AboutMe = () => {
+const AboutMe = ({ currentUser }) => {
   const [aboutText, setAboutText] = useState('');
   const [editing, setEditing] = useState(false);
 
@@ -48,21 +48,24 @@ const AboutMe = () => {
   };
 
   return (
-    <div>
-      <h2>About Me</h2>
+    <div className='m-4'>
+      <h2 className='text-sky-600 p-1'>About Me</h2>
       {editing ? (
         <div>
           <textarea
+          className='m-4'
             value={aboutText}
             onChange={handleInputChange}
             placeholder="Escribe algo sobre tí"
           />
-          <button onClick={handleSaveClick}>Guardar</button>
+          <button onClick={handleSaveClick} className='border-2 p-1 bg-rose-100 flex flex-row align-bottom rounded-lg shadow-lg'>Guardar</button>
         </div>
       ) : (
         <div>
-          <p>{aboutText}</p>
-          <button onClick={handleEditClick}>Modificar</button>
+          <p className='text-sky-800 p-2'>{aboutText}</p>
+          {currentUser && currentUser.id === profileOwnerId && (
+          <button onClick={handleEditClick} className='border-2 p-1 bg-rose-100 flex flex-row align-bottom rounded-lg shadow-lg justify-items-end'>Modificar</button>
+          )}
         </div>
       )}
     </div>
