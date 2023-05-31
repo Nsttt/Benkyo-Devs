@@ -1,11 +1,12 @@
-import Difficult from "./difficult/Difficult";
+
+import Difficult from "./difficult";
 import UserInfo from "./user/user-info";
 
 const Header = () => {
   return (
     <header className="flex flex-row flex-wrap justify-around">
       <UserInfo />
-      <Difficult />
+      <Difficult/>
     </header>
   );
 };
