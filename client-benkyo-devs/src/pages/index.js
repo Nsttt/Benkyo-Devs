@@ -7,7 +7,7 @@ import Image from "next/image"
 
 
 function Home() {
-  const start= [
+  const start = [
     {
       alt: "Start Game",
       img: "@/public/img/START.png"
@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
     <Link href="/game">
-          <Image src={start.img} alt={start.alt} width={200} height={200}/>
+          <img src={start.img} alt={start.alt} width={200} height={200}/>
     </Link>
     <LoginPage/>
     </>
