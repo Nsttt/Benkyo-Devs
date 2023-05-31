@@ -10,7 +10,7 @@ function Home() {
   const start= [
     {
       alt: "Start Game",
-      img: "@public/img/START.png"
+      img: "@/public/img/START.png"
     }
   ];
 
