@@ -33,11 +33,11 @@ export const Login = () => {
     }
   };
   return (
-    <form onSubmit={handleForm} className=" p-4 flex text-blue-500 flex-col gap-4">
+    <form onSubmit={handleForm} className="p-4 flex text-sky-500 flex-col gap-4 w-72">
       <h2 className="text-4xl">Login</h2>
       <fieldset className="flex flex-col text-sm gap-1">
         <label htmlFor="email" >Email:</label>
-        <input className="rounded-md max-w-sm shadow-inner border-solid border-2 border-blue-500"
+        <input className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2"
           type="email"
           name="email"
           id="email"
@@ -54,7 +54,7 @@ export const Login = () => {
       > {pass=="text"?"🔒":"👀"}
       </span></label>
         <input
-        className="rounded-md max-w-sm shadow-inner border-solid border-2 border-blue-500"
+        className="rounded-md max-w-sm shadow-xl border-solid border border-sky-200 p-2"
           type={pass}
           name="pass"
           id="pass"
@@ -63,7 +63,7 @@ export const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
             </fieldset>
-      <button className="w-32 bg-blue-500 text-white justify-center items-center align-center rounded-md shadow-inner border-solid border-2 border-blue-500">Continue</button>
+      <button className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 hover:bg-sky-600">Continuar</button>
       {error ? <p>{error}</p> : null}
     </form>
   );

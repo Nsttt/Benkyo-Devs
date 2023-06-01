@@ -10,16 +10,18 @@ function Home() {
   const start = [
     {
       alt: "Start Game",
-      img: "@/public/img/START.png"
+      img: "img/START.png"
     }
   ];
 
   return (
     <>
-    <Link href="/game">
+    <Link href="/game" className='flex justify-center p-8'>
           <img src={start.img} alt={start.alt} width={200} height={200}/>
-    </Link>
-    <LoginPage/>
+    </Link> 
+    <p className="text-center text-sky-600 pt-5">Or</p>
+    <hr/>
+    <LoginPage />
     </>
     
   )

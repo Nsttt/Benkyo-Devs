@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CardCopi from "carol-88/components/card/CardCopi";
+import CardCopi from "@/components/card/CardCopi";
 import datos from "../../../mocks/questions.json";
 import NextCard from "./button-next-card/next-card";
 

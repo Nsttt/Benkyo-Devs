@@ -6,7 +6,7 @@ const Footer = () => {
             Dejale una estrella a este proyecto en
             <a
                 href="https://github.com/Carol-88/Benkyo-Devs"
-                className="text-green-400 hover:text-green-800"
+                className="text-green-400 hover:text-white"
                 target="_blank"
                 rel="noopener noreferrer"
             > Github
