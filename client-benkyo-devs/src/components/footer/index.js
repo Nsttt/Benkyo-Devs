@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer
-            className="bg-sky-800 text-white text-center py-4 self-end">
+            className="bg-sky-800 text-white text-center py-4">
             ¡Hecho con ❤️ para estudiantes de programación!
             Dejale una estrella a este proyecto en
             <a

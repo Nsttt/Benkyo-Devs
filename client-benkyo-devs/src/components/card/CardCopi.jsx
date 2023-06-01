@@ -6,12 +6,6 @@ const COLORS_ACTIONS = {
 };
 let color = 'bg-white';
 const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted })  => {
-console.log("linea 9", opcion);
-  //let color = 'bg-white';
-
-
-
-
 
   const handleClick = () => {
     setEvaluted(true)
@@ -28,7 +22,7 @@ console.log("linea 9", opcion);
     <button
       onClick={() => handleClick()}
       type="button"
-      className={`${evaluted? color: 'bg-white'} text-2xl w-60 h-24 mx-10  border-solid border-2  rounded-lg`}>
+      className={`${evaluted? color: 'bg-white'} text-1xl w-40 h-16 mx-7  border-solid border-2  rounded-lg mt-10`}>
       {opcion}
     </button>
   )
@@ -44,8 +38,8 @@ const CardCopi = ({ data }) => {
 
   return (
     <div key={id} className="flex items-center justify-center">
-      <section className="flex flex-col items-center justify-center bg-cyan-300 rounded-lg mb-3 p-3">
-        <p className="mb-10">{pregunta}</p>
+      <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg mb-5 mt-5 shadow-xl w-auto h-72 pt-3">
+        <p className="mb-5 mx-4">{pregunta}</p>
         <form className="flex">
           <CardCopiAwser opcion={opciones[0]} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted} />
           <CardCopiAwser opcion={opciones[1]} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted} />
