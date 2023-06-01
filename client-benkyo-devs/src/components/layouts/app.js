@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from '@/components/header/index';
+import Footer from "../footer";
 
 /*
   El uso de Layout es una práctica muy común en React
@@ -24,7 +25,7 @@ export default function Layout({ title = '', children }) {
       <>
         <Header />
         {children}
-        <footer>//footer</footer>
+        <footer><Footer/></footer>
       </>
     </>
   );
