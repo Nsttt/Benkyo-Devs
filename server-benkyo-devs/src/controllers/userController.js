@@ -297,4 +297,5 @@ module.exports = {
     editUserInfoController,
     deleteUserController,
     editPasswordController,
+    editAvatarController,
 };
