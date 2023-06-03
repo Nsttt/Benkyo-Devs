@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { generateError } = require('../helpers/generateError');
 const { deleteAvatar, saveAvatar } = require('../helpers/editAvatar');
 const { createUser, getUserByEmail, getUserById } = require('../db/users');
+const { userAuth } = require('../../midllewares/userAuth');
 
 const newUserController = async (req, res, next) => {
     try {
@@ -295,4 +296,5 @@ module.exports = {
     editUserController,
     editUserInfoController,
     deleteUserController,
+    editPasswordController,
 };
