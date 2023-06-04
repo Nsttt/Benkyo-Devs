@@ -1,5 +1,5 @@
 const { getConnection } = require('./db');
-const { generateError } = require('../helpers/helpers');
+const { generateError } = require('../helpers/generateError');
 const bcrypt = require('bcrypt');
 
 const getUserById = async (id) => {
@@ -9,7 +9,7 @@ const getUserById = async (id) => {
         connection = await getConnection();
 
         const [result] = await connection.query(
-            `SELECT id, email FROM user WHERE id = ?`,
+            `SELECT id, name, username, description, email FROM user WHERE id = ?`,
             [id]
         );
 
@@ -23,7 +23,7 @@ const getUserById = async (id) => {
     }
 }
 
-const createUser = async (name, email, password) => {
+const createUser = async (name, username, description, email, password) => {
     
     let connection;
 
@@ -48,9 +48,9 @@ const createUser = async (name, email, password) => {
 
         const [newUser] = await connection.query(
             `
-            INSERT INTO user (name, email, password) VALUES (?, ?, ?);
+            INSERT INTO user (name, username, description, email, password) VALUES (?, ?, ?, ?, ?);
             `, 
-            [name, email, passwordHash]
+            [name, username, description, email, passwordHash]
         );
        
         return newUser.insertId;
@@ -84,5 +84,5 @@ const getUserByEmail = async (email) => {
 
 
 module.exports = {
-    getUserById, createUser, getUserByEmail
+    getUserById, createUser, getUserByEmail,
 };

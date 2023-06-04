@@ -26,6 +26,8 @@ async function main() {
             CREATE TABLE IF NOT EXISTS user (
                 id int not null auto_increment primary key,
                 name varchar(50) not null,
+                username varchar(30) not null,
+                description varchar (500),
                 avatar varchar(255),
                 email varchar(100) not null,
                 password varchar(255) not null
@@ -102,6 +104,21 @@ async function main() {
                 foreign key(id_deck) references deck(id)
             );        
         `); 
+
+        console.log('Creando tabla USER_CARD_COUNTER');
+
+        await connection.query(`
+            CREATE TABLE IF NOT EXISTS user_card_counter (
+                id int not null auto_increment primary key,
+                easy_counter int,
+                intermidate_counter int,
+                advanced_counter int,
+                id_user int not null,
+                id_card int not null,
+                foreign key(id_user) references user(id),
+                foreign key(id_card) references card(id)
+            );
+        `);
 
     } catch(error) {
         console.error(error);
