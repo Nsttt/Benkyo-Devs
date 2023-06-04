@@ -1,25 +1,30 @@
-import Head from "next/head";
-import Header from "../components/header/Header";
-import Card from "carol-88/components/card/Card";
-//import NextCard from "carol-88/components/card/button-next-card/next-card";
+import React from 'react'
+import LoginPage from './login'
+import Link from 'next/link'
+import Image from "next/image"
 
-export default function Home() {
+
+
+
+function Home() {
+  const start = [
+    {
+      alt: "Start Game",
+      img: "img/START.png"
+    }
+  ];
+
   return (
     <>
-      <Head>
-        <title>Benkyo Devs</title>
-        <meta
-          name="description"
-          content="App de estudio de lenguajes de programacion"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      <main>
-        <Card />
-      </main>
-      <footer>//footer</footer>
+    <Link href="/game" className='flex justify-center p-8'>
+          <img src={start.img} alt={start.alt} width={200} height={200}/>
+    </Link> 
+    <p className="text-center text-sky-600 pt-5">Or</p>
+    <hr/>
+    <LoginPage />
     </>
-  );
+    
+  )
 }
+
+export default Home

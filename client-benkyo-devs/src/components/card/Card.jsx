@@ -1,8 +1,7 @@
 import { useState } from "react";
-import CardCopi from "carol-88/components/card/CardCopi";
-import NextCard from "carol-88/components/card/button-next-card/next-card";
-
+import CardCopi from "@/components/card/CardCopi";
 import datos from "../../../mocks/questions.json";
+import NextCard from "./button-next-card/next-card";
 
 const Card = () => {
 
