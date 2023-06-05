@@ -5,8 +5,24 @@ function Registro() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("password");
-  const [repeatpassword, setRepeatpassword] = useState("repeatpassword");
-  //   const [token, setToken] = useContext(TokenContext);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(true);
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
 
   const showPassword = () => {
     if (password === "password") {
@@ -16,41 +32,17 @@ function Registro() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const registerUser = {
-      username: username,
-      email: email,
-      password: password,
-      repeatpassword: repeatpassword,
-    };
-
-    // const serializedData = JSON.stringify(registerUser);
-
-    // const res = await fetch(`${process.env.REACT_APP_BACKEND}/newUser`, {
-    //   method: "POST",
-    //   body: serializedData,
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    // });
-
-    const responseBody = await res.json();
-    if (!res.ok) {
-      console.error(responseBody.message);
-      return;
+    if (password === confirmPassword) {
+      console.log("Nombre:", username);
+      console.log("Email:", email);
+      console.log("Contraseña:", password);
+    } else {
+      setPasswordMatch(false);
     }
-
-    setUsername("");
-    setEmail("");
-    setPassword("");
   };
-
-  //   if (token) {
-  //     return <Link href="/login"/>
-  //   }
-
   return (
     <div className="p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center">
       <div>
@@ -65,10 +57,10 @@ function Registro() {
             <label htmlFor="userform">Username:</label>
             <input
               className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
-              id="userform"
-              onChange={(e) => setUsername(e.target.value)}
+              id="username"
+              onChange={handleNameChange}
               type="text"
-              value={username}
+              value={name}
               required={true}
             ></input>
           </div>
@@ -77,8 +69,8 @@ function Registro() {
             <label htmlFor="emailform">Email: </label>
             <input
               className="rounded-md max-w-sm shadow-lgl border border-sky-200 p-2 m-2"
-              id="emailform"
-              onChange={(e) => setEmail(e.target.value)}
+              id="email"
+              onChange={handleEmailChange}
               type="email"
               value={email}
               required={true}
@@ -101,17 +93,16 @@ function Registro() {
             <input
               className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
               type={password}
-              name="password"
               id="password"
               value={password}
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
             />
           </fieldset>
 
           <fieldset className="flex flex-col text-sm gap-1">
             <label htmlFor="password">
-              Repeat password:
+              Confirm password:
               <span
                 className="cursor-pointer pl-4 "
                 onClick={() => {
@@ -119,18 +110,22 @@ function Registro() {
                 }}
               >
                 {" "}
-                {repeatpassword == "text" ? "🔒" : "👀"}
+                {confirmPassword == "text" ? "🔒" : "👀"}
               </span>
             </label>
             <input
               className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
-              type={repeatpassword}
-              name="repeatpassword"
-              id="repeatpassword"
-              value={repeatpassword}
+              type={password}
+              id="confirm-password"
+              value={confirmPassword}
               required
-              onChange={(e) => setRepeatpassword(e.target.value)}
+              onChange={handleConfirmPasswordChange}
             />
+            {!passwordMatch && (
+              <p className="text-red-500 text-sm mt-1">
+                Las contraseñas no coinciden.
+              </p>
+            )}
           </fieldset>
 
           <div className="allForm">
