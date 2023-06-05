@@ -5,9 +5,15 @@ function Registro() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-//   const [token, setToken] = useContext(TokenContext);
+  //   const [token, setToken] = useContext(TokenContext);
 
-
+  const showPassword = () => {
+    if (pass === "password") {
+      setPass("text");
+    } else {
+      setPass("password");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,91 +43,108 @@ function Registro() {
     setUsername("");
     setEmail("");
     setPassword("");
-
   };
 
-//   if (token) {
-//     return <Link href="/login"/>
-//   }
+  //   if (token) {
+  //     return <Link href="/login"/>
+  //   }
 
   return (
-    <div>
+    <div className="p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center">
       <div>
-        <h2>Instagrom</h2>
-
-        <p
-          className="pForm"
-          style={{
-            paddingBottom: "20px",
-            paddingTop: "20px",
-            fontSize: "20px",
-            alignContent: "center",
-          }}
-        >
-          Regístrate para ver fotos y videos de tus amigos.
-        </p>
-
-        <button className="buttonForm" type="submit">
-          Iniciar sesión con Facebook
-        </button>
-
-        <p className="separation">______________ o ______________</p>
+        <img src={"/img/PropuestaBanner.png"} />
+        <h2 className="p-4 flex text-sky-500 flex-col gap-4 w-72 text-4xl">
+          {" "}
+          Regístrate
+        </h2>
 
         <form className="form" onSubmit={handleSubmit}>
-          <div className="spaceForm">
-            <label htmlFor="userform"></label>
+          <div className="flex flex-col text-sm gap-1">
+            <label htmlFor="userform">Username</label>
             <input
-              className="input"
+              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
               id="userform"
               onChange={(e) => setUsername(e.target.value)}
               type="text"
-              placeholder="Nombre de usuario"
               value={username}
               required={true}
             ></input>
           </div>
 
-
-          <div className="spaceForm">
-            <label htmlFor="emailform"></label>
+          <div className="flex flex-col text-sm gap-1">
+            <label htmlFor="emailform">Email</label>
             <input
-              className="input"
+              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
               id="emailform"
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              placeholder="Correo eletrónico"
               value={email}
               required={true}
             ></input>
           </div>
 
-          <div className="spaceForm">
-            <label htmlFor="password"></label>
+          <fieldset className="flex flex-col text-sm gap-1">
+            <label htmlFor="pass">
+              Password:
+              <span
+                className="cursor-pointer pl-4 "
+                onClick={() => {
+                  showPassword();
+                }}
+              >
+                {" "}
+                {password == "text" ? "🔒" : "👀"}
+              </span>
+            </label>
             <input
-              className="input"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Contraseña"
+              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
+              type={password}
+              name="pass"
+              id="pass"
               value={password}
-              required={true}
-            ></input>
-          </div>
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </fieldset>
 
+          <fieldset className="flex flex-col text-sm gap-1">
+            <label htmlFor="pass">
+              Repeat password:
+              <span
+                className="cursor-pointer pl-4 "
+                onClick={() => {
+                  verContraseña();
+                }}
+              >
+                {" "}
+                {pass == "text" ? "🔒" : "👀"}
+              </span>
+            </label>
+            <input
+              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
+              type={pass}
+              name="pass"
+              id="pass"
+              value={password}
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </fieldset>
           <div className="allForm">
-            <button className="buttonForm" type="submit">
+            <button
+              className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 m-2 hover:bg-sky-600"
+              type="submit"
+            >
               Siguiente
             </button>
           </div>
         </form>
       </div>
 
-      <div className="formulario">
+      <div className="text-sky-500">
         <p className="text">
           ¿Tienes una cuenta?
-          <Link href="/login">
-                Inicia sesión
-          </Link>                   
+          <Link href="/login"> Inicia sesión</Link>
         </p>
       </div>
     </div>
