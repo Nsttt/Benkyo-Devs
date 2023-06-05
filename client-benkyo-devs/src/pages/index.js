@@ -20,7 +20,7 @@ function Home() {
       <p className="text-center text-sky-600 pt-5">Or</p>
     <hr/>
     <Link href="/game" className='flex justify-center p-8'>
-      <img src={start.img} alt={start.alt} width={200} height={200}/>
+      <img src={start[0].img} alt={start[0].alt} width={200} height={200}/>
     </Link> 
     </>
     
