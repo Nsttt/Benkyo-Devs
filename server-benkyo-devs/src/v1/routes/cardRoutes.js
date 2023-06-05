@@ -4,5 +4,8 @@ const cardController = require('../../controllers/cardController');
 
 router
     .get('/:id', cardController.getCardByIdController)
-    .post('/level/language', cardController.getCardByLangAndLevel );
-module.exports = router;
+    .post('/level/language', cardController.getCardsByLangAndLevel)
+    .get('/fails/:id', cardController.getFailCardsByUserId)
+    .get('/favourites/:id', cardController.getFavouriteCardsByUserId);
+
+    module.exports = router;

@@ -1,4 +1,4 @@
-const { getCardById, getCards } = require('../db/cards');
+const { getCardById, getCards, getFailCards, getFavouriteCards } = require('../db/cards');
 
 const getCardByIdController = async (req, res, next) => {
     try {
@@ -17,7 +17,7 @@ const getCardByIdController = async (req, res, next) => {
     }
 };
 
-const getCardByLangAndLevel = async (req, res, next) => {
+const getCardsByLangAndLevel = async (req, res, next) => {
     try {
         const { language } = req.body;
         const { level } = req.body;
@@ -33,8 +33,38 @@ const getCardByLangAndLevel = async (req, res, next) => {
     }
 };
 
+const getFailCardsByUserId = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const cards = await getFailCards(id);
+
+        res.send({
+            status: 'ok',
+            data: cards,
+        });
+    } catch(error) {
+        next(error);
+    }
+};
+
+const getFavouriteCardsByUserId = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const cards = await getFavouriteCards(id);
+
+        res.send({
+            status: 'ok',
+            data: cards,
+        });
+    } catch(error) {
+        next(error);
+    }
+};
+
 
 
 module.exports = {
-    getCardByIdController, getCardByLangAndLevel
+    getCardByIdController, getCardsByLangAndLevel, getFailCardsByUserId, getFavouriteCardsByUserId
 };

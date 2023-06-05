@@ -50,10 +50,15 @@ con una respuesta correcta y otra incorrecta.
 - **PUT /user/password** Modifica la contraseña de un usuario ✅
 - **DELETE /user/delete** Elimina usuario ✅
 - **POST /login**  Login de usuario (devuelve token) ✅
-- **GET /mysql/:id**  Devuelve la tarjeta por id (questions.json)✅
-- **GET /card/:id**  Devuelve la tarjeta por id (questions.json)✅
-- **GET /card/language/level/:id**  Devuelve todas las tarjetas por nivel y lenguaje 
-- **POST /deck**  Registra mazo de usuario 
+- **GET /:id**  Devuelve la tarjeta por id ✅
+- **POST /card/language/level**  Devuelve todas las tarjetas por nivel y lenguaje ✅
+- **PUT /user_card/answer/user_id** Modifica la columna is_correct de una tarjeta relacionada con el usuario 
+- **PUT /user_card/favourite/user_id** Modifica la columna is_favourite de una tarjeta relacionada con el usuario 
+- **GET /user_card/fail/:id** Devuelve las tarjetas incorrectas del usuario ✅
+- **GET /user_card/favourite/:id** Devuelve las tarjetas favoritas del usuario ✅
+- **PUT /user_card_counter/language/level/:id** Añade un fallo al contador por nivel y por lenguaje
+- **GET /user_card_counter/level/:id** Devuelve el contador de fallos por nivel de un usuario
+- **POST /deck**  Crea mazo de usuario 
 - **GET /deck/:id**  Devuelve mazo de usuario por id 
 
 ## Instalación
