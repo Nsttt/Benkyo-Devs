@@ -3,13 +3,17 @@ const path = require('path');
 const sharp = require('sharp');
 const uuid = require('uuid');
 
-const avatarDir = path.join(__dirname, 'static', 'avatar');
+const imagesDir = path.join(__filename, '../../../static/');
+
+console.log('IMAGE DIR: ' + imagesDir);
 
 async function deleteAvatar(imageName) {
     try {
         let photoPath;
 
-        photoPath = path.join(avatarDir, imageName)
+        photoPath = path.join(imagesDir, imageName)
+
+        console.log(photoPath);
 
         await unlink(photoPath);
     } catch (error) {
@@ -26,7 +30,7 @@ async function saveAvatar(image) {
 
         let photoPath;
         
-        photoPath = path.join(avatarDir, imageName);
+        photoPath = path.join(imagesDir, imageName);
 
         sharpImage.resize(150, 150);
 
@@ -40,5 +44,5 @@ async function saveAvatar(image) {
 
 
 module.exports = {
-    deleteAvatar, saveAvatar,
+    deleteAvatar, saveAvatar
 }

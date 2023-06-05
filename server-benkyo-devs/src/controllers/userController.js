@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const { generateError } = require('../helpers/generateError');
 const { deleteAvatar, saveAvatar } = require('../helpers/editAvatar');
 const { createUser, getUserByEmail, getUserById } = require('../db/users');
-const { userAuth } = require('../../midllewares/userAuth');
 
 const newUserController = async (req, res, next) => {
     try {
@@ -262,6 +261,8 @@ const editAvatarController = async (req, res, next) => {
             `SELECT avatar FROM user WHERE id = ?`,
             [idUserAuth]
         );
+
+        console.log(user[0].avatar);
 
         if (user[0].avatar) {
             await deleteAvatar(user[0].avatar);
