@@ -4,14 +4,15 @@ import Link from "next/link";
 function Registro() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("password");
+  const [repeatpassword, setRepeatpassword] = useState("repeatpassword");
   //   const [token, setToken] = useContext(TokenContext);
 
   const showPassword = () => {
-    if (pass === "password") {
-      setPass("text");
+    if (password === "password") {
+      setPassword("text");
     } else {
-      setPass("password");
+      setPassword("password");
     }
   };
 
@@ -22,6 +23,7 @@ function Registro() {
       username: username,
       email: email,
       password: password,
+      repeatpassword: repeatpassword,
     };
 
     // const serializedData = JSON.stringify(registerUser);
@@ -60,9 +62,9 @@ function Registro() {
 
         <form className="form" onSubmit={handleSubmit}>
           <div className="flex flex-col text-sm gap-1">
-            <label htmlFor="userform">Username</label>
+            <label htmlFor="userform">Username:</label>
             <input
-              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
+              className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
               id="userform"
               onChange={(e) => setUsername(e.target.value)}
               type="text"
@@ -72,9 +74,9 @@ function Registro() {
           </div>
 
           <div className="flex flex-col text-sm gap-1">
-            <label htmlFor="emailform">Email</label>
+            <label htmlFor="emailform">Email: </label>
             <input
-              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
+              className="rounded-md max-w-sm shadow-lgl border border-sky-200 p-2 m-2"
               id="emailform"
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -84,7 +86,7 @@ function Registro() {
           </div>
 
           <fieldset className="flex flex-col text-sm gap-1">
-            <label htmlFor="pass">
+            <label htmlFor="password">
               Password:
               <span
                 className="cursor-pointer pl-4 "
@@ -97,10 +99,10 @@ function Registro() {
               </span>
             </label>
             <input
-              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
+              className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
               type={password}
-              name="pass"
-              id="pass"
+              name="password"
+              id="password"
               value={password}
               required
               onChange={(e) => setPassword(e.target.value)}
@@ -108,28 +110,29 @@ function Registro() {
           </fieldset>
 
           <fieldset className="flex flex-col text-sm gap-1">
-            <label htmlFor="pass">
+            <label htmlFor="password">
               Repeat password:
               <span
                 className="cursor-pointer pl-4 "
                 onClick={() => {
-                  verContraseña();
+                  showPassword();
                 }}
               >
                 {" "}
-                {pass == "text" ? "🔒" : "👀"}
+                {repeatpassword == "text" ? "🔒" : "👀"}
               </span>
             </label>
             <input
-              className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2 m-2"
-              type={pass}
-              name="pass"
-              id="pass"
-              value={password}
+              className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
+              type={repeatpassword}
+              name="repeatpassword"
+              id="repeatpassword"
+              value={repeatpassword}
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setRepeatpassword(e.target.value)}
             />
           </fieldset>
+
           <div className="allForm">
             <button
               className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 m-2 hover:bg-sky-600"
