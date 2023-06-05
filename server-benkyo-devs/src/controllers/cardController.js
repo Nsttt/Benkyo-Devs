@@ -1,4 +1,5 @@
-const { getCardById, getCards, getFailCards, getFavouriteCards } = require('../db/cards');
+const { getCardById, getCards, getUserCard, putCorrect, 
+    putFavourite, deleteFavourite, getFailCards, getFavouriteCards } = require('../db/cards');
 
 const getCardByIdController = async (req, res, next) => {
     try {
@@ -33,6 +34,66 @@ const getCardsByLangAndLevel = async (req, res, next) => {
     }
 };
 
+const getUserCardController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const card = await getUserCard(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
+const setCorrectCard = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const card = await putCorrect(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
+const setFavouriteCard = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const card = await putFavourite(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
+const deleteFavouriteCard = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const card = await deleteFavourite(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
 const getFailCardsByUserId = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -66,5 +127,12 @@ const getFavouriteCardsByUserId = async (req, res, next) => {
 
 
 module.exports = {
-    getCardByIdController, getCardsByLangAndLevel, getFailCardsByUserId, getFavouriteCardsByUserId
+    getCardByIdController, 
+    getCardsByLangAndLevel, 
+    getUserCardController,
+    setCorrectCard, 
+    setFavouriteCard, 
+    deleteFavouriteCard,
+    getFailCardsByUserId, 
+    getFavouriteCardsByUserId,
 };

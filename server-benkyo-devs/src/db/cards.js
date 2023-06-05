@@ -37,7 +37,93 @@ const getCards = async (language, level) => {
         if(result.length === 0) {
             throw generateError(`No existen tarjetas con ese lenguaje y ese nivel`);
         }
-        console.log(result[0]);
+      
+        return result;
+    } finally {
+        if (connection) connection.release();
+    }
+}
+
+const getUserCard = async (id) => {
+    let connection;
+
+    try {
+        connection = await getConnection();
+
+        const [result] = await connection.query(
+            `SELECT * FROM user_card WHERE id = ?;`,
+            [id]
+        );
+
+        if(result.length === 0) {
+            throw generateError(`El usuario no ha respondido la tarjeta correctamente`);
+        }
+    
+        return result;
+    } catch (error) {
+        
+    }finally {
+        if (connection) connection.release();
+    }
+}
+
+const putCorrect = async (id) => {
+    let connection;
+
+    try {
+        connection = await getConnection();
+
+        const [result] = await connection.query(
+            `UPDATE user_card SET is_correct = 1 WHERE id = ?;`,
+            [id]
+        );
+
+        if(result.length === 0) {
+            throw generateError(`El usuario no ha respondido la tarjeta correctamente`);
+        }
+    
+        return result;
+    } finally {
+        if (connection) connection.release();
+    }
+}
+
+const putFavourite = async (id) => {
+    let connection;
+
+    try {
+        connection = await getConnection();
+
+        const [result] = await connection.query(
+            `UPDATE user_card SET is_favourite = 1 WHERE id = ?;`,
+            [id]
+        );
+
+        if(result.length === 0) {
+            throw generateError(`El usuario no ha añadido la tarjeta a favoritos correctamente`);
+        }
+    
+        return result;
+    } finally {
+        if (connection) connection.release();
+    }
+}
+
+const deleteFavourite = async (id) => {
+    let connection;
+
+    try {
+        connection = await getConnection();
+
+        const [result] = await connection.query(
+            `UPDATE user_card SET is_favourite = 0 WHERE id = ?;`,
+            [id]
+        );
+
+        if(result.length === 0) {
+            throw generateError(`El usuario no ha eliminado la tarjeta a favoritos correctamente`);
+        }
+    
         return result;
     } finally {
         if (connection) connection.release();
@@ -87,5 +173,5 @@ const getFavouriteCards = async (id) => {
 }
 
 module.exports = {
-    getCardById, getCards, getFailCards, getFavouriteCards
+    getCardById, getCards, getUserCard, putCorrect, putFavourite, deleteFavourite, getFailCards, getFavouriteCards,
 }

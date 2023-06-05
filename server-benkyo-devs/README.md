@@ -52,8 +52,9 @@ con una respuesta correcta y otra incorrecta.
 - **POST /login**  Login de usuario (devuelve token) ✅
 - **GET /:id**  Devuelve la tarjeta por id ✅
 - **POST /card/language/level**  Devuelve todas las tarjetas por nivel y lenguaje ✅
-- **PUT /user_card/answer/user_id** Modifica la columna is_correct de una tarjeta relacionada con el usuario 
-- **PUT /user_card/favourite/user_id** Modifica la columna is_favourite de una tarjeta relacionada con el usuario 
+- **GET /user_card/:id** Devuelve todas las tarjetas relacionadas con el usuario 
+- **PUT /correct/:id** Modifica la columna is_correct de una tarjeta relacionada con el usuario ✅
+- **PUT /favourite/:id** Modifica la columna is_favourite de una tarjeta relacionada con el usuario ✅
 - **GET /user_card/fail/:id** Devuelve las tarjetas incorrectas del usuario ✅
 - **GET /user_card/favourite/:id** Devuelve las tarjetas favoritas del usuario ✅
 - **PUT /user_card_counter/language/level/:id** Añade un fallo al contador por nivel y por lenguaje
