@@ -65,6 +65,10 @@ export const Login = () => {
             </fieldset>
       <button className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 hover:bg-sky-600">Continuar</button>
       {error ? <p>{error}</p> : null}
+      <Link href="/registro">
+        <p>Si no tienes cuenta, Registrate</p>
+      </Link>
+      
     </form>
   );
 };
