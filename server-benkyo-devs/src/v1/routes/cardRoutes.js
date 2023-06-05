@@ -3,7 +3,6 @@ const router = express.Router();
 const cardController = require('../../controllers/cardController');
 
 router
-    .get('/mysql/:id', cardController.getMySQLCardByIdController)
-    .get('/:id', cardController.getCardByIdController);
-    
+    .get('/:id', cardController.getCardByIdController)
+    .post('/level/language', cardController.getCardByLangAndLevel );
 module.exports = router;

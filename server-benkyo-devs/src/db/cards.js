@@ -22,6 +22,28 @@ const getCardById = async (id) => {
     }
 }
 
+const getCards = async (language, level) => {
+    let connection;
+
+    try {
+        connection = await getConnection();
+
+        const [result] = await connection.query(
+            `SELECT * FROM card INNER JOIN language ON card.id_language = language.id INNER JOIN level ON card.id_level = 
+            level.id WHERE language.name = ? AND level.name = ?;`,
+            [language, level]
+        );
+
+        if(result.length === 0) {
+            throw generateError(`No existen tarjetas con ese lenguaje y ese nivel`);
+        }
+        console.log(result[0]);
+        return result;
+    } finally {
+        if (connection) connection.release();
+    }
+}
+
 module.exports = {
-    getCardById,
+    getCardById, getCards
 }

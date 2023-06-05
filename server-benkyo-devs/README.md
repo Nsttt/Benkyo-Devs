@@ -52,9 +52,7 @@ con una respuesta correcta y otra incorrecta.
 - **POST /login**  Login de usuario (devuelve token) ✅
 - **GET /mysql/:id**  Devuelve la tarjeta por id (questions.json)✅
 - **GET /card/:id**  Devuelve la tarjeta por id (questions.json)✅
-- **GET /user/card/easy/:id**  Devuelve todas las tarjetas relacionadas con el usuario
-- **GET /user/card/intermidate/:id**  Devuelve todas las tarjetas relacionadas con el usuario
-- **GET /user/card/difficult/:id**  Devuelve todas las tarjetas relacionadas con el usuario
+- **GET /card/language/level/:id**  Devuelve todas las tarjetas por nivel y lenguaje 
 - **POST /deck**  Registra mazo de usuario 
 - **GET /deck/:id**  Devuelve mazo de usuario por id 
 
