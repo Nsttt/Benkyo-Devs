@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserInfo from 'carol-88/components/header/user/user-info'
+import UserInfo from '@/components/header/user/user-info'
 
 const user = {
   username: 'Carol',
