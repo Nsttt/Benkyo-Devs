@@ -4,124 +4,145 @@ import Link from "next/link";
 function Registro() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-//   const [token, setToken] = useContext(TokenContext);
+  const [password, setPassword] = useState("password");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(true);
 
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const registerUser = {
-      username: username,
-      email: email,
-      password: password,
-    };
-
-    // const serializedData = JSON.stringify(registerUser);
-
-    // const res = await fetch(`${process.env.REACT_APP_BACKEND}/newUser`, {
-    //   method: "POST",
-    //   body: serializedData,
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    // });
-
-    const responseBody = await res.json();
-    if (!res.ok) {
-      console.error(responseBody.message);
-      return;
-    }
-
-    setUsername("");
-    setEmail("");
-    setPassword("");
-
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   };
 
-//   if (token) {
-//     return <Link href="/login"/>
-//   }
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const showPassword = () => {
+    if (password === "password") {
+      setPassword("text");
+    } else {
+      setPassword("password");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (password === confirmPassword) {
+      console.log("Nombre:", username);
+      console.log("Email:", email);
+      console.log("Contraseña:", password);
+    } else {
+      setPasswordMatch(false);
+    }
+  };
   return (
-    <div>
+    <div className="p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center">
       <div>
-        <h2>Instagrom</h2>
-
-        <p
-          className="pForm"
-          style={{
-            paddingBottom: "20px",
-            paddingTop: "20px",
-            fontSize: "20px",
-            alignContent: "center",
-          }}
-        >
-          Regístrate para ver fotos y videos de tus amigos.
-        </p>
-
-        <button className="buttonForm" type="submit">
-          Iniciar sesión con Facebook
-        </button>
-
-        <p className="separation">______________ o ______________</p>
+        <img src={"/img/PropuestaBanner.png"} />
+        <h2 className="p-4 flex text-sky-500 flex-col gap-4 w-72 text-4xl">
+          {" "}
+          Regístrate
+        </h2>
 
         <form className="form" onSubmit={handleSubmit}>
-          <div className="spaceForm">
-            <label htmlFor="userform"></label>
+          <div className="flex flex-col text-sm gap-1">
+            <label htmlFor="userform">Username:</label>
             <input
-              className="input"
-              id="userform"
-              onChange={(e) => setUsername(e.target.value)}
+              className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
+              id="username"
+              onChange={handleNameChange}
               type="text"
-              placeholder="Nombre de usuario"
-              value={username}
+              value={name}
               required={true}
             ></input>
           </div>
 
-
-          <div className="spaceForm">
-            <label htmlFor="emailform"></label>
+          <div className="flex flex-col text-sm gap-1">
+            <label htmlFor="emailform">Email: </label>
             <input
-              className="input"
-              id="emailform"
-              onChange={(e) => setEmail(e.target.value)}
+              className="rounded-md max-w-sm shadow-lgl border border-sky-200 p-2 m-2"
+              id="email"
+              onChange={handleEmailChange}
               type="email"
-              placeholder="Correo eletrónico"
               value={email}
               required={true}
             ></input>
           </div>
 
-          <div className="spaceForm">
-            <label htmlFor="password"></label>
+          <fieldset className="flex flex-col text-sm gap-1">
+            <label htmlFor="password">
+              Password:
+              <span
+                className="cursor-pointer pl-4 "
+                onClick={() => {
+                  showPassword();
+                }}
+              >
+                {" "}
+                {password == "text" ? "🔒" : "👀"}
+              </span>
+            </label>
             <input
-              className="input"
+              className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
+              type={password}
               id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Contraseña"
               value={password}
-              required={true}
-            ></input>
-          </div>
+              required
+              onChange={handlePasswordChange}
+            />
+          </fieldset>
+
+          <fieldset className="flex flex-col text-sm gap-1">
+            <label htmlFor="password">
+              Confirm password:
+              <span
+                className="cursor-pointer pl-4 "
+                onClick={() => {
+                  showPassword();
+                }}
+              >
+                {" "}
+                {confirmPassword == "text" ? "🔒" : "👀"}
+              </span>
+            </label>
+            <input
+              className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
+              type={password}
+              id="confirm-password"
+              value={confirmPassword}
+              required
+              onChange={handleConfirmPasswordChange}
+            />
+            {!passwordMatch && (
+              <p className="text-red-500 text-sm mt-1">
+                Las contraseñas no coinciden.
+              </p>
+            )}
+          </fieldset>
 
           <div className="allForm">
-            <button className="buttonForm" type="submit">
+            <button
+              className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 m-2 hover:bg-sky-600"
+              type="submit"
+            >
               Siguiente
             </button>
           </div>
         </form>
       </div>
 
-      <div className="formulario">
+      <div className="text-sky-500">
         <p className="text">
           ¿Tienes una cuenta?
-          <Link href="/login">
-                Inicia sesión
-          </Link>                   
+          <Link href="/login"> Inicia sesión</Link>
         </p>
       </div>
     </div>

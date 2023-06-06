@@ -3,8 +3,8 @@ import { useState } from "react";
 //import { logInUserService } from "..";
 //import { useNavigate } from "react-router-dom";
 //import { AuthContext } from "../";
-//haría falta crear el authcontext 
-//los services para recuperar la información del backend 
+//haría falta crear el authcontext
+//los services para recuperar la información del backend
 
 export const Login = () => {
   //const navigate = useNavigate();
@@ -25,20 +25,22 @@ export const Login = () => {
   const handleForm = async (e) => {
     e.preventDefault();
     try {
-     // const token = await logInUserService({ email, password });
-
+      // const token = await logInUserService({ email, password });
       // login(token);
-     
     } catch (error) {
       setError("Email o password incorrecto", error.message);
     }
   };
   return (
-    <form onSubmit={handleForm} className="p-4 flex text-sky-500 flex-col gap-4 w-72">
+    <form
+      onSubmit={handleForm}
+      className="p-4 flex text-sky-500 flex-col gap-4 w-72"
+    >
       <h2 className="text-4xl">Login</h2>
       <fieldset className="flex flex-col text-sm gap-1">
-        <label htmlFor="email" >Email:</label>
-        <input className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2"
+        <label htmlFor="email">Email:</label>
+        <input
+          className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2"
           type="email"
           name="email"
           id="email"
@@ -48,14 +50,20 @@ export const Login = () => {
         />
       </fieldset>
       <fieldset className="flex flex-col text-sm gap-1">
-        <label htmlFor="pass" >Password:<span className="cursor-pointer pl-4 "
-        onClick={() => {
-          verContraseña();
-        }}
-      > {pass=="text"?"🔒":"👀"}
-      </span></label>
+        <label htmlFor="pass">
+          Password:
+          <span
+            className="cursor-pointer pl-4 "
+            onClick={() => {
+              verContraseña();
+            }}
+          >
+            {" "}
+            {pass == "text" ? "🔒" : "👀"}
+          </span>
+        </label>
         <input
-        className="rounded-md max-w-sm shadow-xl border-solid border border-sky-200 p-2"
+          className="rounded-md max-w-sm shadow-xl border-solid border border-sky-200 p-2"
           type={pass}
           name="pass"
           id="pass"
@@ -63,13 +71,14 @@ export const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-            </fieldset>
-      <button className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 hover:bg-sky-600">Continuar</button>
+      </fieldset>
+      <button className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 hover:bg-sky-600">
+        Continuar
+      </button>
       {error ? <p>{error}</p> : null}
       <Link href="/registro">
         <p>Si no tienes cuenta, Registrate</p>
       </Link>
-      
     </form>
   );
 };
