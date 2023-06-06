@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import Link from "next/link";
+import Image from "next/image"
 
 function Registro() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("password");
+  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
 
@@ -46,8 +47,8 @@ function Registro() {
   return (
     <div className="p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center">
       <div>
-        <img src={"/img/PropuestaBanner.png"} />
-        <h2 className="p-4 flex text-sky-500 flex-col gap-4 w-72 text-4xl">
+        <Image src={"/img/PropuestaBanner.png"} width={300} height={200} />
+        <h2 className="p-4 flex text-sky-500 flex-col gap-4 w-72 text-2xl">
           {" "}
           Regístrate
         </h2>
@@ -60,7 +61,7 @@ function Registro() {
               id="username"
               onChange={handleNameChange}
               type="text"
-              value={name}
+              value={username}
               required={true}
             ></input>
           </div>

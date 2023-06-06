@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image"
 //import { logInUserService } from "..";
 //import { useNavigate } from "react-router-dom";
 //import { AuthContext } from "../";
@@ -36,6 +37,7 @@ export const Login = () => {
       onSubmit={handleForm}
       className="p-4 flex text-sky-500 flex-col gap-4 w-72"
     >
+      <Image src={"/img/PropuestaBanner.png"} width={300} height={200}/>
       <h2 className="text-4xl">Login</h2>
       <fieldset className="flex flex-col text-sm gap-1">
         <label htmlFor="email">Email:</label>
