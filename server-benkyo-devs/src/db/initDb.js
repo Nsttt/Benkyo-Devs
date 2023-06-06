@@ -84,8 +84,8 @@ async function main() {
                 id int not null auto_increment primary key,
                 id_user int not null,
                 id_card int not null,
-                is_correct boolean,
-                is_favourite boolean,
+                is_correct boolean default 0,
+                is_favourite boolean default 0,
                 foreign key(id_user) references user(id),
                 foreign key(id_card) references card(id)
             );

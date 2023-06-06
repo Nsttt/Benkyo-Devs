@@ -1,7 +1,7 @@
-const { listQuestions } = require('../helpers/getJsonCard');
-const { getCardById } = require('../db/cards');
+const { getCardById, getCards, getUserCard, putCorrect, 
+    putFavourite, deleteFavourite, getFailCards, getFavouriteCards } = require('../db/cards');
 
-const getMySQLCardByIdController = async (req, res, next) => {
+const getCardByIdController = async (req, res, next) => {
     try {
         const { id } = req.params;
         
@@ -18,23 +18,121 @@ const getMySQLCardByIdController = async (req, res, next) => {
     }
 };
 
-//Desde questions.json
+const getCardsByLangAndLevel = async (req, res, next) => {
+    try {
+        const { language } = req.body;
+        const { level } = req.body;
 
-const getCardByIdController = async (req, res, next) => {
+        const cards = await getCards(language, level);
+
+        res.send({
+            status: 'ok',
+            data: cards,
+        });
+    } catch(error) {
+        next(error);
+    }
+};
+
+const getUserCardController = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const data = await listQuestions();
-        const dataFound = data.easy.find(function (data) {
-            return data.id == id;
+
+        const card = await getUserCard(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
         });
-       
-        res.json(dataFound);
-    } catch (error) {
+    } catch(error) {
+        next(error);
+    }
+}
+
+const setCorrectCard = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const card = await putCorrect(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
+const setFavouriteCard = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const card = await putFavourite(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
+const deleteFavouriteCard = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const card = await deleteFavourite(id);
+
+        res.send({
+            status: 'ok',
+            data: card,
+        });
+    } catch(error) {
+        next(error);
+    }
+}
+
+const getFailCardsByUserId = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const cards = await getFailCards(id);
+
+        res.send({
+            status: 'ok',
+            data: cards,
+        });
+    } catch(error) {
+        next(error);
+    }
+};
+
+const getFavouriteCardsByUserId = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const cards = await getFavouriteCards(id);
+
+        res.send({
+            status: 'ok',
+            data: cards,
+        });
+    } catch(error) {
         next(error);
     }
 };
 
 
+
 module.exports = {
-    getCardByIdController, getMySQLCardByIdController,
+    getCardByIdController, 
+    getCardsByLangAndLevel, 
+    getUserCardController,
+    setCorrectCard, 
+    setFavouriteCard, 
+    deleteFavouriteCard,
+    getFailCardsByUserId, 
+    getFavouriteCardsByUserId,
 };

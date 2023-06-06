@@ -16,13 +16,7 @@ const userAuth = async (req, res, next) => {
     }
 
     let tokenInfo;
-    console.log(authorization);
-    console.log(process.env.SECRET);
-
-=======
-    let tokenInfo;
    
->>>>>>> Stashed changes
     try {
       tokenInfo = jwt.verify(authorization, process.env.SECRET);
     } catch {
