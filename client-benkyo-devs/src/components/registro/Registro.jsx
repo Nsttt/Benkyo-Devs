@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Link from "next/link";
+import Image from "next/image"
 
 function Registro() {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ function Registro() {
   return (
     <div className="p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center">
       <div>
-        <img src={"/img/PropuestaBanner.png"} />
+        <Image src={"/img/PropuestaBanner.png"} width={300} height={200} />
         <h2 className="p-4 flex text-sky-500 flex-col gap-4 w-72 text-4xl">
           {" "}
           Regístrate
