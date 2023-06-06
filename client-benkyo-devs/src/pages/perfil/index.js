@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import UserInfo from '@/components/header/user/user-info'
+import Points from '@/components/perfil/points/points';
 
 const user = {
   username: 'Carol',
@@ -80,8 +81,7 @@ const ProfileForm = ({ _user, setEditing }) => {
 
 const AboutMe = () => {
 
-  const { points } = user
-  const { easy, medium, hard } = points
+
   
   const [editing, setEditing] = useState(false);
   // const [aboutText, setAboutText] = useState();
@@ -140,11 +140,8 @@ const AboutMe = () => {
         }
       </div>
       <hr />
-      <div className='p-5'>
-          <h3 className='font-bold'>Points</h3>
-          <p>Fácil: {easy}</p>
-          <p>Medio: {medium}</p>
-          <p>Difícil: {hard}</p>
+      <div>
+        <Points/>
       </div>
     </section>
 
