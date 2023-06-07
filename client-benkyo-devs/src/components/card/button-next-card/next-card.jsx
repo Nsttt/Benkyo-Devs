@@ -6,7 +6,7 @@ function NextCard({ handleClick }) {
       onClick={handleClick}
       className="flex justify-center items-center p-3 rounded-xl w-40"
     >
-      <img src={"img/arrowimg.webp"} width={100} />
+      <img src={"img/flecha-correcta.png"} width={100} />
     </button>
   );
 }

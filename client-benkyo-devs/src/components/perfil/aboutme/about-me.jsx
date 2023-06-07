@@ -145,7 +145,7 @@ const AboutMe = ({about}) => {
   }
   
   return (
-    <section id='user' className='shadow-lg p-3'>
+    <section id='user'>
       <UserInfo/>
       <div className='p-5'>
         <h3 className='font-bold'>About me</h3>
