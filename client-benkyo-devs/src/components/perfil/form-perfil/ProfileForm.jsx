@@ -6,6 +6,8 @@ const ProfileForm = ({ _user, setEditing }) => {
       setEditing(false)
       console.log('envía los datos al api')
     }
+
+ 
   
     return (
       <form className='flex flex-col'>
@@ -46,3 +48,4 @@ const ProfileForm = ({ _user, setEditing }) => {
       </form>
     )
   }
+  export default ProfileForm;

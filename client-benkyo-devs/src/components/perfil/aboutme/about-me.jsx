@@ -1,4 +1,9 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import UserInfo from '@/components/header/user/user-info';
+import ProfileForm from '@/components/perfil/form-perfil/Profileform';
+import ProfileInfo from '../info-perfil/ProfileInfo';
+
+
 
 // const AboutMe = ({ currentUser }) => {
 //   const [aboutText, setAboutText] = useState('');
@@ -74,7 +79,11 @@
 
 // export default AboutMe;
 
-const AboutMe = () => {
+
+
+
+
+const AboutMe = ({about}) => {
 
 
   
@@ -124,21 +133,38 @@ const AboutMe = () => {
   //   saveAboutText();
   // };
 
+  const user = {
+    username: 'Carol',
+    about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum.',
+    avatar: 'https://images.unsplash.com/photo-1621574539436-4b0b0b0b0b0b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVua3lvJTIwY2Fyb2wlMjBhdmF0YXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80',
+    points: {
+      easy: 101,
+      medium: 102,
+      hard: 103
+    }
+  }
+  
   return (
     <section id='user' className='shadow-lg p-3'>
-      <UserInfo />
+      <UserInfo/>
       <div className='p-5'>
-        {
-          editing 
-            ? <ProfileForm user={user} setEditing={setEditing} />
-            : <ProfileInfo user={user} setEditing={setEditing} />
-        }
+        <h3 className='font-bold'>About me</h3>
+        <p>{about}</p>
+        <button 
+          onClick={() => setEditing(true)}
+          type='button'
+          className='mt-3 w-[120px] bg-sky-600 text-white rounded-md p-2'
+        >
+            Editar
+        </button>
+          {
+           editing
+              ? <ProfileForm user={user.username} avatar={user.avatar} about={user.about} setEditing={setEditing} />
+              : "Algo ha fallado"
+          }
       </div>
-      <hr />
-      <div>
-        <Points/>
-      </div>
-    </section>
+      
+         </section>
 
 
     // <div className='m-4'>
