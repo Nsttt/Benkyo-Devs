@@ -25,6 +25,8 @@ function Registro() {
     setConfirmPassword(e.target.value);
   };
 
+// REVISAR ESTA PARTE
+
   const showPassword = () => {
     if (password === "password") {
       setPassword("text");
@@ -32,6 +34,8 @@ function Registro() {
       setPassword("password");
     }
   };
+
+  //Hasta aquí
 
   const handleSubmit = (e) => {
     e.preventDefault();
