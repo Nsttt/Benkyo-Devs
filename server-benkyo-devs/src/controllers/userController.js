@@ -2,11 +2,19 @@ const { getConnection } = require('../db/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { generateError } = require('../helpers/generateError');
+// const { newUserSchema } = require('../schemas/newUserSchema');
+// const { validateSchema } = require('../helpers/validateSchema');
 const { deleteAvatar, saveAvatar } = require('../helpers/editAvatar');
 const { createUser, getUserByEmail, getUserById } = require('../db/users');
 
 const newUserController = async (req, res, next) => {
     try {
+        // const data = req.body;
+        
+        // console.log(data);
+        
+        // await validateSchema(newUserSchema, data);
+
         const { name, username, description, email, password } = req.body;
 
         if(!name || !username || !description || !email || !password) {

@@ -52,15 +52,16 @@ con una respuesta correcta y otra incorrecta.
 - **POST /login**  Login de usuario (devuelve token) ✅
 - **GET /:id**  Devuelve la tarjeta por id ✅
 - **POST /card/language/level**  Devuelve todas las tarjetas por nivel y lenguaje ✅
-- **GET /user_card/:id** Devuelve todas las tarjetas relacionadas con el usuario 
+- **GET /user_card/:id** Devuelve todas las tarjetas relacionadas con el usuario ✅
 - **PUT /correct/:id** Modifica la columna is_correct de una tarjeta relacionada con el usuario ✅
 - **PUT /favourite/:id** Modifica la columna is_favourite de una tarjeta relacionada con el usuario ✅
 - **GET /user_card/fail/:id** Devuelve las tarjetas incorrectas del usuario ✅
 - **GET /user_card/favourite/:id** Devuelve las tarjetas favoritas del usuario ✅
-- **PUT /user_card_counter/language/level/:id** Añade un fallo al contador por nivel y por lenguaje
-- **GET /user_card_counter/level/:id** Devuelve el contador de fallos por nivel de un usuario
 - **POST /deck**  Crea mazo de usuario 
 - **GET /deck/:id**  Devuelve mazo de usuario por id 
+- **GET /user_card_counter/language/level/:id** Devuelve el contador de aciertos por nivel de un usuario
+- **GET /user_card_counter/language/level/:id** Devuelve el contador de fallos por nivel de un usuario
+- **PUT /user_card_counter/language/level/:id** Añade un fallo al contador por nivel y por lenguaje
 
 ## Instalación
 

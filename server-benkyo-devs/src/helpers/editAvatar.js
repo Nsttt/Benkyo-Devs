@@ -5,8 +5,6 @@ const uuid = require('uuid');
 
 const imagesDir = path.join(__filename, '../../../static/');
 
-console.log('IMAGE DIR: ' + imagesDir);
-
 async function deleteAvatar(imageName) {
     try {
         let photoPath;
