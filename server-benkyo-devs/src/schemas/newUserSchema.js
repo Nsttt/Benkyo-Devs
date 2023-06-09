@@ -33,7 +33,6 @@ const newUserSchema = Joi.object().keys({
             }
     }),
 
-
     description: Joi.string()
         .min(10)
         .max(500)
@@ -48,7 +47,6 @@ const newUserSchema = Joi.object().keys({
                 );
             }
     }),
-
 
     email: Joi.string()
         .email()

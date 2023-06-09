@@ -105,21 +105,6 @@ async function main() {
             );        
         `); 
 
-        console.log('Creando tabla USER_CARD_COUNTER');
-
-        await connection.query(`
-            CREATE TABLE IF NOT EXISTS user_card_counter (
-                id int not null auto_increment primary key,
-                easy_counter int,
-                intermidate_counter int,
-                advanced_counter int,
-                id_user int not null,
-                id_card int not null,
-                foreign key(id_user) references user(id),
-                foreign key(id_card) references card(id)
-            );
-        `);
-
     } catch(error) {
         console.error(error);
 

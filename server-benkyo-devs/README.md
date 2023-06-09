@@ -57,11 +57,8 @@ con una respuesta correcta y otra incorrecta.
 - **PUT /favourite/:id** Modifica la columna is_favourite de una tarjeta relacionada con el usuario ✅
 - **GET /user_card/fail/:id** Devuelve las tarjetas incorrectas del usuario ✅
 - **GET /user_card/favourite/:id** Devuelve las tarjetas favoritas del usuario ✅
-- **POST /deck**  Crea mazo de usuario 
-- **GET /deck/:id**  Devuelve mazo de usuario por id 
-- **GET /user_card_counter/language/level/:id** Devuelve el contador de aciertos por nivel de un usuario
-- **GET /user_card_counter/language/level/:id** Devuelve el contador de fallos por nivel de un usuario
-- **PUT /user_card_counter/language/level/:id** Añade un fallo al contador por nivel y por lenguaje
+
+
 
 ## Instalación
 

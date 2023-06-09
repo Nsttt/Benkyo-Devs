@@ -1,5 +1,5 @@
 const { getCardById, getCards, getUserCard, putCorrect, 
-    putFavourite, deleteFavourite, getFailCards, getFavouriteCards } = require('../db/cards');
+    putFavourite, deleteFavourite, getFailCards, getFavouriteCards, getCorrectCards } = require('../db/cards');
 
 const getCardByIdController = async (req, res, next) => {
     try {
@@ -124,6 +124,22 @@ const getFavouriteCardsByUserId = async (req, res, next) => {
     }
 };
 
+const getCorrectCardsByUserId = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const cards = await getCorrectCards(id);
+
+        res.send({
+            status: 'ok',
+            data: cards,
+        });
+    } catch(error) {
+        next(error);
+    }
+};
+
+
 
 
 module.exports = {
@@ -135,4 +151,5 @@ module.exports = {
     deleteFavouriteCard,
     getFailCardsByUserId, 
     getFavouriteCardsByUserId,
+    getCorrectCardsByUserId,
 };
