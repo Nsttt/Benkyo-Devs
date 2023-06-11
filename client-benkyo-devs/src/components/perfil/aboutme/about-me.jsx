@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserInfo from '@/components/header/user/user-info';
 import ProfileForm from '@/components/perfil/form-perfil/Profileform';
-import ProfileInfo from '../info-perfil/ProfileInfo';
+import ProfileInfo from '@/components/perfil/info-perfil/ProfileInfo';
 
 
 
@@ -160,7 +160,7 @@ const AboutMe = ({about}) => {
           {
            editing
               ? <ProfileForm user={user.username} avatar={user.avatar} about={user.about} setEditing={setEditing} />
-              : "Algo ha fallado"
+              : "NO funciona, y en tamaño pequeño, al darle a editar, sobrescribe el siguiente componente"
           }
       </div>
       
