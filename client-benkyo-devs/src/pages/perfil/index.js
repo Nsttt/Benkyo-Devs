@@ -18,7 +18,7 @@ const Perfil = () => {
       </section>
 
       {/* Sección Mazos */}
-      <section className='m-5 text-center'>
+      <section className='p-1 text-center'>
           <p className='gap-2'><Decks/></p>
       </section>
 
