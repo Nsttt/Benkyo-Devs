@@ -6,6 +6,10 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {},
+  theme: {
+    // colors: {
+    //   newblue: "#24d4fc",
+    // },
+  },
   plugins: [],
 };
