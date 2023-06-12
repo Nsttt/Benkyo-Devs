@@ -1,52 +1,65 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 const COLORS_ACTIONS = {
-  success: 'bg-green-400',
-  error: 'bg-red-400',
+  success: "bg-green-400",
+  error: "bg-red-400",
 };
-let color = 'bg-white';
-const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted })  => {
-
+let color = "bg-white";
+const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted }) => {
   const handleClick = () => {
-    setEvaluted(true)
+    setEvaluted(true);
     setTimeout(() => {
-      setEvaluted(false)
-    }, 2000)
-  }
+      setEvaluted(false);
+    }, 2000);
+  };
 
-  color = (evaluted && opcion === respuesta)
-    ? COLORS_ACTIONS.success
-    : COLORS_ACTIONS.error
+  color =
+    evaluted && opcion === respuesta
+      ? COLORS_ACTIONS.success
+      : COLORS_ACTIONS.error;
 
   return (
     <button
       onClick={() => handleClick()}
       type="button"
-      className={`${evaluted? color: 'bg-white'} text-1xl w-40 h-16 mx-7  border-solid border-2  rounded-lg mt-10`}>
+      className={`${
+        evaluted ? color : "bg-white"
+      } text-1xl mx-7  border-solid border-2  rounded-lg mt-10 max-w-[20rem] w-fit h-fit p-6`}
+    >
       {opcion}
     </button>
-  )
-}
+  );
+};
 
 const CardCopi = ({ data }) => {
   if (!data) {
-    return <p>Error</p>
+    return <p>Error</p>;
   }
 
-  const { id, pregunta, opciones, respuesta } = data
-  const [evaluted, setEvaluted] = useState(false)
+  const { id, pregunta, opciones, respuesta } = data;
+  const [evaluted, setEvaluted] = useState(false);
 
   return (
     <div key={id} className="flex items-center justify-center">
       <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg mb-5 mt-5 shadow-xl w-auto h-72 pt-3">
         <p className="mb-5 mx-4">{pregunta}</p>
         <form className="flex">
-          <CardCopiAwser opcion={opciones[0]} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted} />
-          <CardCopiAwser opcion={opciones[1]} respuesta={respuesta} evaluted={evaluted} setEvaluted={setEvaluted} />
+          <CardCopiAwser
+            opcion={opciones[0]}
+            respuesta={respuesta}
+            evaluted={evaluted}
+            setEvaluted={setEvaluted}
+          />
+          <CardCopiAwser
+            opcion={opciones[1]}
+            respuesta={respuesta}
+            evaluted={evaluted}
+            setEvaluted={setEvaluted}
+          />
         </form>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default CardCopi
+export default CardCopi;
