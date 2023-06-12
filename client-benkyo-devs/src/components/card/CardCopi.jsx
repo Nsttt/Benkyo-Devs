@@ -24,7 +24,7 @@ const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted }) => {
       type="button"
       className={`${
         evaluted ? color : "bg-white"
-      } text-1xl mx-7  border-solid border-2  rounded-lg mt-10 max-w-[20rem] w-fit h-fit p-6`}
+      } text-1xl mx-7  border-solid border-2  rounded-lg mt-10 max-w-[20rem] w-fit h-fit p-8`}
     >
       {opcion}
     </button>
