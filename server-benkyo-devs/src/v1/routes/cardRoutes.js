@@ -11,6 +11,8 @@ router
     .put('/favourite/:id', userAuth, cardController.setFavouriteCard)
     .put('/delete_favourite/:id', userAuth, cardController.deleteFavouriteCard)
     .get('/fails/:id', cardController.getFailCardsByUserId)
-    .get('/favourites/:id', cardController.getFavouriteCardsByUserId);
+    .get('/favourites/:id', cardController.getFavouriteCardsByUserId)
+    .get('/correct/:id', cardController.getCorrectCardsByUserId);
+
 
     module.exports = router;

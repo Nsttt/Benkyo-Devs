@@ -94,31 +94,14 @@ async function main() {
         console.log('Creando tabla USER_CARD_DECK');
 
         await connection.query(`  
-            CREATE TABLE IF NOT EXISTS user_card_deck (
+            CREATE TABLE IF NOT EXISTS user_deck (
                 id int not null auto_increment primary key,
-                id_user int not null,
-                id_card int not null,
-                id_deck int not null,
-                foreign key(id_user) references user(id),
-                foreign key(id_card) references card(id),
-                foreign key(id_deck) references deck(id)
+                id_user int,
+                id_deck int,
+                foreign key(id_user) references user(id) ON UPDATE CASCADE,
+                foreign key(id_deck) references deck(id) ON UPDATE CASCADE
             );        
         `); 
-
-        console.log('Creando tabla USER_CARD_COUNTER');
-
-        await connection.query(`
-            CREATE TABLE IF NOT EXISTS user_card_counter (
-                id int not null auto_increment primary key,
-                easy_counter int,
-                intermidate_counter int,
-                advanced_counter int,
-                id_user int not null,
-                id_card int not null,
-                foreign key(id_user) references user(id),
-                foreign key(id_card) references card(id)
-            );
-        `);
 
     } catch(error) {
         console.error(error);
