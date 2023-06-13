@@ -1,17 +1,18 @@
 const { getConnection } = require('../db/db');
 const { generateError } = require('../helpers/generateError');
-const { getDecks, getFailCards } = require('../db/cards');
-const { createFailsDeck } = require('../db/decks')
+const { getFailCards } = require('../db/cards');
+const { createFailsDeck, getDecks } = require('../db/decks')
 
 const getDecksController = async (req, res, next) => {
     try {
-        const { id } = req.userAuth.id;
+        const { id } = req.params;
 
-        await getDecks(id);
+        const data = await getDecks(id);
 
         res.send({
             status: 'Ok',
-            message: `Listando mazos del usuario con id ${id}`
+            message: `Listando mazos del usuario con id ${id}`,
+            data: data,
         })
     } catch (error) {
         next(error);

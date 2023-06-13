@@ -7,11 +7,17 @@ const getDecks = async (id) => {
     try {
         connection = await getConnection();
 
-        const [] = await connection.query(
+        const [result] = await connection.query(
             `
-                SELECT * from
-            `
+                SELECT d.id, d.name
+                FROM deck d
+                JOIN user_deck ud ON d.id = ud.id_deck
+                JOIN user u ON ud.id_user = u.id
+                WHERE u.id = 1;
+            `,[id]
         );
+
+        return result[0];
     } finally {
         if (connection) connection.release();
     }
@@ -38,7 +44,7 @@ const createFailsDeck = async (id) => {
 
         const [] = await connection.query(
             `
-                UPDATE user_card_deck SET id_user = ${id} , id_deck = ${deckId[0].id};
+                UPDATE user_deck SET id_user = ${id} , id_deck = ${deckId[0].id};
             `
         );
 
@@ -50,5 +56,5 @@ const createFailsDeck = async (id) => {
 
 
 module.exports = {
-    createFailsDeck,
+    createFailsDeck, getDecks,
 }
