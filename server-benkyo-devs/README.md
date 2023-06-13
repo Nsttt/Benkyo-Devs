@@ -57,6 +57,8 @@ con una respuesta correcta y otra incorrecta.
 - **PUT /favourite/:id** Modifica la columna is_favourite de una tarjeta relacionada con el usuario ✅
 - **GET /user_card/fail/:id** Devuelve las tarjetas incorrectas del usuario ✅
 - **GET /user_card/favourite/:id** Devuelve las tarjetas favoritas del usuario ✅
+- **GET /deck/:id** Devuelve los decks del usuario ✅
+- **PUT /deck/fails/:id** Crea los mazos de fails del usuario ✅
 
 
 

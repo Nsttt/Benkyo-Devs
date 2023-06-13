@@ -5,6 +5,7 @@ const { userAuth } = require('../../../midllewares/userAuth');
 
 router
     .get('/:id', userAuth, deckController.getDecksController)
+    .get('/fails/:id', userAuth, deckController.getFailsDeckController)
     .put('/fails/:id', userAuth, deckController.failsDeckController);
 
 

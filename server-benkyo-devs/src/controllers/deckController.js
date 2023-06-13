@@ -1,7 +1,7 @@
 const { getConnection } = require('../db/db');
 const { generateError } = require('../helpers/generateError');
 const { getFailCards } = require('../db/cards');
-const { createFailsDeck, getDecks } = require('../db/decks')
+const { createFailsDeck, getFailsDeck, getDecks } = require('../db/decks')
 
 const getDecksController = async (req, res, next) => {
     try {
@@ -12,6 +12,22 @@ const getDecksController = async (req, res, next) => {
         res.send({
             status: 'Ok',
             message: `Listando mazos del usuario con id ${id}`,
+            data: data,
+        })
+    } catch (error) {
+        next(error);
+    }
+}
+
+const getFailsDeckController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const data = await getFailsDeck(id);
+
+        res.send({
+            status: 'Ok',
+            message: `Listando mazo de fallos del usuario con id ${id}`,
             data: data,
         })
     } catch (error) {
@@ -62,5 +78,5 @@ const favouriteDeckController = async (req, res, next) => {
 }
 
 module.exports = {
-    getDecksController, failsDeckController, 
+    getDecksController, getFailsDeckController, failsDeckController, 
 }
