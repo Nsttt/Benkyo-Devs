@@ -33,15 +33,15 @@ const CardCopiAwser = ({ opcion, respuesta, evaluted, setEvaluted }) => {
 
 const CardCopi = ({ data }) => {
   if (!data) {
-    return <p>Error</p>;
+    return <ErrorComponent/>;
   }
 
   const { id, pregunta, opciones, respuesta } = data;
   const [evaluted, setEvaluted] = useState(false);
 
   return (
-    <div key={id} className="flex items-center justify-center">
-      <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg mb-5 mt-5 shadow-xl w-auto h-72 pt-3">
+    <div key={id} className="flex items-center justify-center pt-10">
+      <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg shadow-xl w-auto h-72 pt-3">
         <p className="mb-5 mx-4">{pregunta}</p>
         <form className="flex">
           <CardCopiAwser

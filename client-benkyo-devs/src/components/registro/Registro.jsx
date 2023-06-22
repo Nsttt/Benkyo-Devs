@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image"
 
+
 function Registro() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -9,20 +10,38 @@ function Registro() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+    const registerUser = {
+      username: username,
+      email: email,
+      password: password,
+    };
 
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
+    const serializedData = JSON.stringify(registerUser);
+
+    //CAMBIAR LAS VARIABLES A NUESTRO SERVER y NUESTRO ENDPOINT
+
+    const res = await fetch(`${process.env.SERVER_PORT}/register`, {
+      method: "POST",
+      body: serializedData,
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    const responseBody = await res.json();
+    if (!res.ok) {
+      toast.error(responseBody.message);
+      return;
+    }
+
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
   };
 
 // REVISAR ESTA PARTE
@@ -35,19 +54,7 @@ function Registro() {
     }
   };
 
-  //Hasta aquí
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (password === confirmPassword) {
-      console.log("Nombre:", username);
-      console.log("Email:", email);
-      console.log("Contraseña:", password);
-    } else {
-      setPasswordMatch(false);
-    }
-  };
+  
   return (
     <div className="p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center">
       <div>
@@ -63,7 +70,7 @@ function Registro() {
             <input
               className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
               id="username"
-              onChange={handleNameChange}
+              onChange={(e) => setUsername(e.target.value)}
               type="text"
               value={username}
               required={true}
@@ -75,7 +82,7 @@ function Registro() {
             <input
               className="rounded-md max-w-sm shadow-lgl border border-sky-200 p-2 m-2"
               id="email"
-              onChange={handleEmailChange}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               value={email}
               required={true}
@@ -100,8 +107,8 @@ function Registro() {
               type={password}
               id="password"
               value={password}
-              required
-              onChange={handlePasswordChange}
+              required={true}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </fieldset>
 
@@ -124,7 +131,7 @@ function Registro() {
               id="confirm-password"
               value={confirmPassword}
               required
-              onChange={handleConfirmPasswordChange}
+              onChange={(e) => setPasswordMatch(e.target.value)}
             />
             {!passwordMatch && (
               <p className="text-red-500 text-sm mt-1">

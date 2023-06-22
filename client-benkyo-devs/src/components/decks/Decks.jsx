@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from "next/image"
+import Link from 'next/link'
 
 function Decks() {
   return (
@@ -7,6 +8,7 @@ function Decks() {
        
        <Image src="/img/PropuestaBanner.png" width={600} height={100} alt='Logo Benkyo-Devs'/>
 
+        <Link href="/save-cards">
         <div className=" w-full rounded overflow-hidden shadow-lg h-full m-3 pb-3">
             <div className="flex justify-center items-center">
                 <Image src="/img/PropuestaLogo.png" alt="Sunset in the mountains" width={100} height={100} />
@@ -20,9 +22,11 @@ function Decks() {
                 </p>
             </div>
         </div>
+        </Link>
         
+        <Link href="/fail-cards">
         <div className="w-full rounded overflow-hidden shadow-lg h-full m-3 pb-3">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center pt-3">
                 <Image src="/img/PropuestaLogo.png" alt="Sunset in the mountains" width={100} height={100} />
             </div>
             <div className="px-6 ">
@@ -34,6 +38,7 @@ function Decks() {
                 </p>
             </div>
         </div>
+        </Link>
     </div>
   )
 }
