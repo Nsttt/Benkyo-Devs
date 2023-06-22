@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardCopi from "@/components/card/CardCopi";
 import datos from "../../../mocks/questions.json";
 import NextCard from "./button-next-card/next-card";
+// import ErrorComponent from "./ErrorComponent";
 
 const Card = () => {
   const [indexCardCurrent, setIndexCardCurrent] = useState(0);
@@ -21,8 +22,8 @@ const Card = () => {
   if (!data) return <p>Cargando...</p>;
 
   return (
-    <div className="flex flex-col items-center justify-content p-20">
-      <CardCopi data={data} />
+    <div className="flex flex-col items-center justify-content">     
+      <CardCopi data={data}  />
       <NextCard handleClick={handleNextCard} />
     </div>
   );
