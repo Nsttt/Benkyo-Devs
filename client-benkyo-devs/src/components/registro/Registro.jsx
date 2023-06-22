@@ -24,7 +24,7 @@ function Registro() {
 
     //CAMBIAR LAS VARIABLES A NUESTRO SERVER y NUESTRO ENDPOINT
 
-    const res = await fetch(`${process.env.REACT_APP_BACKEND}/newUser`, {
+    const res = await fetch(`${process.env.SERVER_PORT}/register`, {
       method: "POST",
       body: serializedData,
       headers: {
