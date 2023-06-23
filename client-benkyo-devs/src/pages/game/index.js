@@ -3,10 +3,11 @@ import GameScreen from "@/components/gamecomponents/GameScreen.jsx";
 
 
 export default function Game() {
+
   return (
     <GameLayout>
       <main>
-        <GameScreen />  
+        <GameScreen  />  
       </main>
     </GameLayout>
   );
