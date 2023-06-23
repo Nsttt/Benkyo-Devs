@@ -59,7 +59,7 @@ const Card = ({ cardData, setIsAnswerCorrect }) => {
 
   return (
     <div key={id} className="flex items-center justify-center pt-10">
-      <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg shadow-xl w-auto h-72 pt-3">
+      <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg shadow-xl w-auto h-72 pt-3"></section>
         <p className="mb-5 mx-4">{pregunta}</p>
         <form className="flex">
           <ButtonQuestion id="1" texto={opciones[0]} color={buttonLeftColor} />

@@ -9,7 +9,7 @@ const GameScreen = () => {
   const [score, setScore] = useState(0);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const cardData = datos.faciles[indexCardCurrent];
-
+//
   useEffect(() => {
     if (isAnswerCorrect) {
       setScore(score + 1);
