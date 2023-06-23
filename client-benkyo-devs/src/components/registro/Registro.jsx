@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image"
+import banner from "./img/PropuestaBanner.png";
 
 
 function Registro() {
@@ -9,24 +10,24 @@ function Registro() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const registerUser = {
+    const newUser = {
       username: username,
       email: email,
       password: password,
     };
 
-    const serializedData = JSON.stringify(registerUser);
+    const newUserJson = JSON.stringify(newUser);
 
-    //CAMBIAR LAS VARIABLES A NUESTRO SERVER y NUESTRO ENDPOINT
-
-    const res = await fetch(`${process.env.SERVER_PORT}/register`, {
+    const res = await fetch(`${process.env.URL_API}/register`, {
       method: "POST",
-      body: serializedData,
+      body: newUserJson,
       headers: {
         "Content-type": "application/json",
       },
@@ -43,22 +44,11 @@ function Registro() {
     setPassword("");
     setConfirmPassword("");
   };
-
-// REVISAR ESTA PARTE
-
-  const showPassword = () => {
-    if (password === "password") {
-      setPassword("text");
-    } else {
-      setPassword("password");
-    }
-  };
-
   
   return (
-    <div className="p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center">
+    <>
       <div>
-        <Image src={"/img/PropuestaBanner.png"} width={300} height={200} />
+        <Image src={banner} width={300} height={200} />
         <h2 className="p-4 flex text-sky-500 flex-col gap-4 w-72 text-2xl">
           {" "}
           Regístrate
@@ -73,7 +63,7 @@ function Registro() {
               onChange={(e) => setUsername(e.target.value)}
               type="text"
               value={username}
-              required={true}
+              required
             ></input>
           </div>
 
@@ -85,7 +75,7 @@ function Registro() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               value={email}
-              required={true}
+              required
             ></input>
           </div>
 
@@ -94,20 +84,17 @@ function Registro() {
               Password:
               <span
                 className="cursor-pointer pl-4 "
-                onClick={() => {
-                  showPassword();
-                }}
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {" "}
-                {password == "text" ? "🔒" : "👀"}
+                {showPassword ? "👀" : "🔒"}
               </span>
             </label>
             <input
               className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
-              type={password}
+              type={showPassword ? "text" : "password"}
               id="password"
               value={password}
-              required={true}
+              required
               onChange={(e) => setPassword(e.target.value)}
             />
           </fieldset>
@@ -117,21 +104,21 @@ function Registro() {
               Confirm password:
               <span
                 className="cursor-pointer pl-4 "
-                onClick={() => {
-                  showPassword();
-                }}
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
-                {" "}
-                {confirmPassword == "text" ? "🔒" : "👀"}
+                {showConfirmPassword ? "👀" : "🔒"}
               </span>
             </label>
             <input
               className="rounded-md max-w-sm shadow-lg border border-sky-200 p-2 m-2"
-              type={password}
+              type={showConfirmPassword ? "text" : "password"}
               id="confirm-password"
               value={confirmPassword}
               required
-              onChange={(e) => setPasswordMatch(e.target.value)}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                setPasswordMatch(e.target.value === password);
+              }}
             />
             {!passwordMatch && (
               <p className="text-red-500 text-sm mt-1">
@@ -149,15 +136,17 @@ function Registro() {
             </button>
           </div>
         </form>
-      </div>
 
-      <div className="text-sky-500">
+        <div>
         <p className="text">
           ¿Tienes una cuenta?
           <Link href="/login"> Inicia sesión</Link>
         </p>
       </div>
-    </div>
+      </div>
+
+  
+    </>
   );
 }
 

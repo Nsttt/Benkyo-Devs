@@ -1,14 +1,13 @@
+import GameLayout from "@/components/layouts/GameLayout.jsx";
+import GameScreen from "@/components/gamecomponents/GameScreen.jsx";
 
-
-import Card from "@/components/card/Card";
-import Layout from "@/components/layouts/app";
 
 export default function Game() {
   return (
-    <Layout>
+    <GameLayout>
       <main>
-        <Card/>
+        <GameScreen />  
       </main>
-    </Layout>
+    </GameLayout>
   );
 }

@@ -1,14 +1,12 @@
 import Registro from "@/components/registro/Registro";
-import AboutMe from "@/components/perfil/aboutme/about-me";
 
 
 
-export default function LoginPage() {
+export default function ResgisterPage() {
   return (
     <>
       <main className='flex justify-center p-3 w-screen'>
         <Registro/>
-        <AboutMe/>
       </main>
     </>
 
