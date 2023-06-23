@@ -10,7 +10,7 @@ import Footer from "../footer";
   el componente Header y Footer, y de renderizarlos en cada
   página donde se use Layout minimizando la cantidad de código.
 */
-export default function GameLayout({ title = '', children }) {
+export default function GameLayout({ children }) {
   return (
     <>
       <Head>
