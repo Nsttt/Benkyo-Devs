@@ -29,40 +29,15 @@ const DIFICULTS = [
   },
 ];
 
-const Difficult = () => {
+const DifficultySelector = () => {
 
   const [dificultIdSelected, setDificultIdSelected] = useState(DIFICULTS[0].id)
-
-  /*
-    Explicación
-    Esta es una forma resumida de hacer eso:
-    
-    const handleDificultIdSelected = (id) => {
-      setDificultIdSelected(id)
-    }
-  */
-  const handleDificultIdSelected = (id) => setDificultIdSelected(id)
 
   return (
     <section className="flex gap-3">
       {DIFICULTS.map((dificult) => {
-
-        /*
-          Explicación
-          Esta es una forma de extraer los datos de un objeto
-          para no usarlos asi: dificult.id, dificult.name, dificult.img
-        */
         const { id, name, img } = dificult;
 
-        /*
-          Explicación
-          Esta es una forma resumida de hacer eso:
-          if (dificultIdSelected === id) {
-            opacity = "opacity-100"
-          } else {
-            opacity = "opacity-50"
-          }
-        */
         const opacity = dificultIdSelected === id ? "opacity-100" : "opacity-50"
         const grayScale = dificultIdSelected === id ? "grayscale-0" : "grayscale"
 
@@ -75,7 +50,7 @@ const Difficult = () => {
               flex flex-col items-center justify-center 
               cursor-pointer ${grayScale} ${opacity}
             `}
-            onClick={() => handleDificultIdSelected(id)}
+            onClick={() => setDificultIdSelected(id)}
           >
             <Image src={img} alt={name} width={50} height={50} />
             <p className="text-xs">{name}</p>
@@ -86,4 +61,4 @@ const Difficult = () => {
   );
 };
 
-export default Difficult;
+export default DifficultySelector;
