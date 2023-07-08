@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image"
+import Image from "next/image";
 //import { logInUserService } from "..";
-//import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 //import { AuthContext } from "../";
 //haría falta crear el authcontext
 //los services para recuperar la información del backend
 
-export const Login = () => {
+export default function Login() {
   //const navigate = useNavigate();
   //const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
@@ -15,6 +15,7 @@ export const Login = () => {
   const [error, setError] = useState("");
   const [pass, setPass] = useState("password");
 
+  const router = useRouter();
   const verContraseña = () => {
     if (pass === "password") {
       setPass("text");
@@ -26,8 +27,16 @@ export const Login = () => {
   const handleForm = async (e) => {
     e.preventDefault();
     try {
-      // const token = await logInUserService({ email, password });
-      // login(token);
+      const user = await fetch("http://localhost:4000/api/v1/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }).then((res) => res.json());
+
+      console.log(user);
+      router.push("/perfil");
     } catch (error) {
       setError("Email o password incorrecto", error.message);
     }
@@ -37,7 +46,7 @@ export const Login = () => {
       onSubmit={handleForm}
       className="p-4 flex text-sky-500 flex-col gap-4 w-72"
     >
-      <Image src={"/img/PropuestaBanner.png"} width={300} height={200}/>
+      <Image src={"/img/PropuestaBanner.png"} width={300} height={200} />
       <h2 className="text-4xl">Login</h2>
       <fieldset className="flex flex-col text-sm gap-1">
         <label htmlFor="email">Email:</label>
@@ -45,7 +54,6 @@ export const Login = () => {
           className="rounded-md max-w-sm shadow-xl border border-sky-200 p-2"
           type="email"
           name="email"
-          id="email"
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
@@ -68,19 +76,15 @@ export const Login = () => {
           className="rounded-md max-w-sm shadow-xl border-solid border border-sky-200 p-2"
           type={pass}
           name="pass"
-          id="pass"
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
         />
       </fieldset>
-      <button className="flex justify-center w-32 shadow-xl bg-sky-500 text-white rounded-md p-2 hover:bg-sky-600">
+      <button className="flex self-center  shadow-xl bg-sky-500 text-white rounded-md px-6 py-2 hover:bg-sky-600 text-center content-center">
         Continuar
       </button>
       {error ? <p>{error}</p> : null}
-      <Link href="/registro">
-        <p>Si no tienes cuenta, Registrate</p>
-      </Link>
     </form>
   );
-};
+}
