@@ -1,30 +1,53 @@
-import React from 'react'
-import LoginPage from './login'
-import Link from 'next/link'
-import Image from "next/image"
-
-
-
+import React, { useEffect, useState } from "react";
+import Login from "../components/login/Login.jsx";
+import Link from "next/link";
+import Footer from "../components/footer/index.js";
+import GameImage from "../components/gameImage/GameImage.jsx";
+import Registro from "../components/registro/Registro.jsx";
 
 function Home() {
-  const start = [
-    {
-      alt: "Start Game",
-      img: "/img/START.png"
+  const [showRegister, setShowRegister] = useState(false);
+
+  useEffect(() => {
+    if (showRegister) {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("registro").style.display = "block";
+    } else {
+      document.getElementById("login").style.display = "block";
+      document.getElementById("registro").style.display = "none";
     }
-  ];
+  }, [showRegister]);
 
   return (
-    <section className='p-4 flex text-sky-500 flex-col gap-4 w-72 align-content: center'>
-    <LoginPage />
-      <p className="text-center text-sky-600 pt-5">Or</p>
-    <hr/>
-    <Link href="/game" className='flex justify-center p-8'>
-      <Image src={start[0].img} alt={start[0].alt} width={200} height={200}/>
-    </Link> 
-    </section>
-    
-  )
+    <>
+      <div className="flex flex-col items-center">
+        <div id="login">
+          <Login />
+          <p className="text-sky-500">
+            Si no tienes cuenta,{" "}
+            <span className="underline">
+              <p onClick={() => setShowRegister(!showRegister)}>regístrate.</p>
+            </span>
+          </p>
+        </div>
+        <div id="registro">
+          <Registro />
+          <p className="text-sky-500">
+            Si tienes cuenta,{" "}
+            <span className="underline">
+              <p onClick={() => setShowRegister(!showRegister)}>
+                inicia sesión.
+              </p>
+            </span>
+          </p>
+        </div>
+        <p className="text-center text-sky-600 pt-5">Or</p>
+        <hr />
+        <GameImage size={200} />
+      </div>
+      <Footer />
+    </>
+  );
 }
 
-export default Home
+export default Home;
