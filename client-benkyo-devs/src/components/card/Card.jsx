@@ -1,12 +1,12 @@
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import ButtonQuestion from "./button-question/ButtonQuestion";
+import NextCard from "./button-next-card/next-card";
 
 const COLORS_ACTIONS = {
   success: "bg-green-400",
   error: "bg-red-400",
   unanswered: "bg-white",
 };
-
 
 const Card = ({ cardData, setIsAnswerCorrect }) => {
   const [buttonLeftColor, setButtonLeftColor] = useState(
@@ -58,14 +58,15 @@ const Card = ({ cardData, setIsAnswerCorrect }) => {
   const { id, pregunta, opciones, respuesta } = cardData;
 
   return (
-    <div key={id} className="flex items-center justify-center pt-10">
-      <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg shadow-xl w-auto h-72 pt-3"></section>
+    <div key={id} className="flex  flex-col items-center justify-center pt-10">
+      <section className="flex flex-col items-center justify-center bg-sky-100 rounded-lg shadow-xl w-auto h-72 pt-3">
         <p className="mb-5 mx-4">{pregunta}</p>
         <form className="flex">
           <ButtonQuestion id="1" texto={opciones[0]} color={buttonLeftColor} />
           <ButtonQuestion id="2" texto={opciones[1]} color={buttonRightColor} />
         </form>
       </section>
+      <NextCard />
     </div>
   );
 };
