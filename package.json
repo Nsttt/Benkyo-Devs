@@ -1,9 +1,23 @@
 {
-  "dependencies": {
-    "eslint": "^8.40.0",
-    "eslint-config-next": "^13.4.2",
-    "next": "^13.4.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "name": "benkyo-devs",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "client-benkyo-devs",
+        "server-benkyo-devs"
+    ],
+    "scripts": {
+        "build": "turbo build",
+        "dev": "turbo dev",
+        "start": "turbo start",
+        "lint": "turbo lint",
+        "format": "turbo format"
+    },
+    "devDependencies": {
+        "turbo": "^1.10.14",
+        "eslint": "^8.50.0",
+        "eslint-config-next": "^13.5.3",
+        "eslint-config-prettier": "^8.10.0",
+        "prettier": "^2.8.8"
+    }
 }

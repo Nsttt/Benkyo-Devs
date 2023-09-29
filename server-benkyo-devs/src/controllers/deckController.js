@@ -1,7 +1,7 @@
 const { getConnection } = require('../db/db');
 const { generateError } = require('../helpers/generateError');
 const { getFailCards } = require('../db/cards');
-const { createFailsDeck, getFailsDeck, getDecks } = require('../db/decks')
+const { createFailsDeck, getFailsDeck, getDecks } = require('../db/decks');
 
 const getDecksController = async (req, res, next) => {
     try {
@@ -13,11 +13,11 @@ const getDecksController = async (req, res, next) => {
             status: 'Ok',
             message: `Listando mazos del usuario con id ${id}`,
             data: data,
-        })
+        });
     } catch (error) {
         next(error);
     }
-}
+};
 
 const getFailsDeckController = async (req, res, next) => {
     try {
@@ -29,12 +29,11 @@ const getFailsDeckController = async (req, res, next) => {
             status: 'Ok',
             message: `Listando mazo de fallos del usuario con id ${id}`,
             data: data,
-        })
+        });
     } catch (error) {
         next(error);
     }
-}
-
+};
 
 //Endpoint que crea un deck de fails para el usuario logueado
 const failsDeckController = async (req, res, next) => {
@@ -50,33 +49,32 @@ const failsDeckController = async (req, res, next) => {
         const cards = await getFailCards(idUserAuth);
 
         if (!cards) {
-            throw generateError(`El usuario con id${idUserAuth} no tiene tarjetas incorrectas`);
-        }
-        else {
+            throw generateError(
+                `El usuario con id${idUserAuth} no tiene tarjetas incorrectas`
+            );
+        } else {
             //Creo un nuevo mazo fails para el usuario
             await createFailsDeck(idUserAuth);
 
             res.send({
                 status: 'Ok',
                 message: `Creado mazo fails para usuario ${idUserAuth}`,
-            })
+            });
         }
     } catch (error) {
-
         next(error);
     } finally {
         if (connection) connection.release();
     }
-}
+};
 
 const favouriteDeckController = async (req, res, next) => {
     try {
-        
-    } catch (error) {
-        
-    }
-}
+    } catch (error) {}
+};
 
 module.exports = {
-    getDecksController, getFailsDeckController, failsDeckController, 
-}
+    getDecksController,
+    getFailsDeckController,
+    failsDeckController,
+};

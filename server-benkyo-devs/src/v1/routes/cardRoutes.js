@@ -14,5 +14,4 @@ router
     .get('/favourites/:id', cardController.getFavouriteCardsByUserId)
     .get('/correct/:id', cardController.getCorrectCardsByUserId);
 
-
-    module.exports = router;
+module.exports = router;

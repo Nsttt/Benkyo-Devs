@@ -8,5 +8,4 @@ router
     .get('/fails/:id', userAuth, deckController.getFailsDeckController)
     .put('/fails/:id', userAuth, deckController.failsDeckController);
 
-
 module.exports = router;

@@ -1,6 +1,4 @@
-
-
-async function validateSchema (schema, data) {
+async function validateSchema(schema, data) {
     try {
         await schema.validateAsync(data);
     } catch (error) {
@@ -11,4 +9,4 @@ async function validateSchema (schema, data) {
 
 module.exports = {
     validateSchema,
-}
+};

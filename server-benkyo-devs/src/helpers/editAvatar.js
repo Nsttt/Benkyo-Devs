@@ -9,7 +9,7 @@ async function deleteAvatar(imageName) {
     try {
         let photoPath;
 
-        photoPath = path.join(imagesDir, imageName)
+        photoPath = path.join(imagesDir, imageName);
 
         console.log(photoPath);
 
@@ -20,14 +20,13 @@ async function deleteAvatar(imageName) {
 }
 
 async function saveAvatar(image) {
-
     try {
         const sharpImage = sharp(image.data);
-        
+
         const imageName = uuid.v4() + '.jpg';
 
         let photoPath;
-        
+
         photoPath = path.join(imagesDir, imageName);
 
         sharpImage.resize(150, 150);
@@ -40,7 +39,7 @@ async function saveAvatar(image) {
     }
 }
 
-
 module.exports = {
-    deleteAvatar, saveAvatar
-}
+    deleteAvatar,
+    saveAvatar,
+};

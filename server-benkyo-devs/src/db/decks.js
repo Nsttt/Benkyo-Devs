@@ -14,14 +14,15 @@ const getDecks = async (id) => {
                 JOIN user_deck ud ON d.id = ud.id_deck
                 JOIN user u ON ud.id_user = u.id
                 WHERE u.id = ?;
-            `,[id]
+            `,
+            [id]
         );
 
         return result[0];
     } finally {
         if (connection) connection.release();
     }
-}
+};
 
 const getFailsDeck = async (id) => {
     let connection;
@@ -35,10 +36,11 @@ const getFailsDeck = async (id) => {
                 FROM deck d
                 INNER JOIN user_deck ud ON d.id = ud.id_deck
                 WHERE ud.id_user = ? AND d.name like "fails_user_%";
-            `,[id]
+            `,
+            [id]
         );
 
-        if(!result) {
+        if (!result) {
             throw generateError('El usuario no tiene mazo de fallos');
         }
 
@@ -46,7 +48,7 @@ const getFailsDeck = async (id) => {
     } finally {
         if (connection) connection.release();
     }
-}
+};
 
 const createFailsDeck = async (id) => {
     let connection;
@@ -60,7 +62,7 @@ const createFailsDeck = async (id) => {
                 INSERT INTO deck (name) VALUES ('fails_user_${id}');
             `
         );
-        
+
         const [deckId] = await connection.query(
             `
                 SELECT id FROM deck WHERE name = 'fails_user_${id}';
@@ -77,9 +79,10 @@ const createFailsDeck = async (id) => {
     } finally {
         if (connection) connection.release();
     }
-}
-
+};
 
 module.exports = {
-    createFailsDeck, getFailsDeck, getDecks,
-}
+    createFailsDeck,
+    getFailsDeck,
+    getDecks,
+};

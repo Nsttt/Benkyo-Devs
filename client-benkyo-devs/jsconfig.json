@@ -1,9 +1,9 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/public/*": ["./src/public/*"]
+    "compilerOptions": {
+        "paths": {
+            "/*": ["./src/*"],
+            "@/components/*": ["./src/components/*"],
+            "@/public/*": ["./src/public/*"]
+        }
     }
-  }
 }

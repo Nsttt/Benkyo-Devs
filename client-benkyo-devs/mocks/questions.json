@@ -1,38 +1,38 @@
 {
-	"faciles": [
-		{
-			"id": 1,
-			"pregunta": "¿Cuál es el operador para sumar dos números en JavaScript?",
-			"opciones": ["+", "/"],
-			"respuesta": "+",
-			"reverso": "ksdhnfcshfoiwjnfskldncspojfÑL"
-		},
-		{
-			"id": 2,
-			"pregunta": "¿Cuál es el resultado de \"5\" + 2 en JavaScript?",
-			"opciones": ["52", "Error"],
-			"respuesta": "52"
-		},
-		{
-			"id": 3,
-			"pregunta": "¿Qué es una función flecha en JavaScript?",
-			"opciones": [
-				"Una función que utiliza una sintaxis de flecha (=>) para definir su cuerpo.",
-				"Una función que escribe código en JavaScript para crear animaciones de flechas."
-			],
-			"respuesta": "JavaScript intenta convertir la cadena \"5\" a un número, por lo que el resultado de la resta es 2."
-		},
-		{
-			"id": 4,
-			"pregunta": "¿Cuál es el operador que se utiliza para concatenar cadenas de texto en JavaScript?",
-			"opciones": ["+", "-"],
-			"respuesta": "\"+\": este es el operador que se utiliza para concatenar cadenas de texto en JavaScript, el operador \"-\" se utiliza para restar números."
-		},
-		{
-			"id": 5,
-			"pregunta": "¿Cuál es la forma correcta de crear un objeto en JavaScript?",
-			"opciones": ["const miObjeto = {}", " const miObjeto = []"],
-			"respuesta": " const miObjeto = {}: esta es la forma correcta de crear un objeto en JavaScript utilizando la sintaxis de objetos literales."
-		}
-	]
+    "faciles": [
+        {
+            "id": 1,
+            "pregunta": "¿Cuál es el operador para sumar dos números en JavaScript?",
+            "opciones": ["+", "/"],
+            "respuesta": "+",
+            "reverso": "ksdhnfcshfoiwjnfskldncspojfÑL"
+        },
+        {
+            "id": 2,
+            "pregunta": "¿Cuál es el resultado de \"5\" + 2 en JavaScript?",
+            "opciones": ["52", "Error"],
+            "respuesta": "52"
+        },
+        {
+            "id": 3,
+            "pregunta": "¿Qué es una función flecha en JavaScript?",
+            "opciones": [
+                "Una función que utiliza una sintaxis de flecha (=>) para definir su cuerpo.",
+                "Una función que escribe código en JavaScript para crear animaciones de flechas."
+            ],
+            "respuesta": "JavaScript intenta convertir la cadena \"5\" a un número, por lo que el resultado de la resta es 2."
+        },
+        {
+            "id": 4,
+            "pregunta": "¿Cuál es el operador que se utiliza para concatenar cadenas de texto en JavaScript?",
+            "opciones": ["+", "-"],
+            "respuesta": "\"+\": este es el operador que se utiliza para concatenar cadenas de texto en JavaScript, el operador \"-\" se utiliza para restar números."
+        },
+        {
+            "id": 5,
+            "pregunta": "¿Cuál es la forma correcta de crear un objeto en JavaScript?",
+            "opciones": ["const miObjeto = {}", " const miObjeto = []"],
+            "respuesta": " const miObjeto = {}: esta es la forma correcta de crear un objeto en JavaScript utilizando la sintaxis de objetos literales."
+        }
+    ]
 }

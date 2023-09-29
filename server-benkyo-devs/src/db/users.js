@@ -13,24 +13,23 @@ const getUserById = async (id) => {
             [id]
         );
 
-        if(result.length === 0) {
-            throw generateError('No hay ningún usuario con ese id')
+        if (result.length === 0) {
+            throw generateError('No hay ningún usuario con ese id');
         }
 
-        return result[0]
+        return result[0];
     } finally {
         if (connection) connection.release();
     }
-}
+};
 
 const createUser = async (name, username, description, email, password) => {
-    
     let connection;
 
     try {
         connection = await getConnection();
-   
-        const [userId]= await connection.query(
+
+        const [userId] = await connection.query(
             `
             SELECT id FROM user WHERE email = ?
             `,
@@ -49,40 +48,41 @@ const createUser = async (name, username, description, email, password) => {
         const [newUser] = await connection.query(
             `
             INSERT INTO user (name, username, description, email, password) VALUES (?, ?, ?, ?, ?);
-            `, 
+            `,
             [name, username, description, email, passwordHash]
         );
-       
+
         return newUser.insertId;
     } finally {
-        if(connection) connection.release();
+        if (connection) connection.release();
     }
 };
 
 const getUserByEmail = async (email) => {
     let connection;
-  
+
     try {
-      connection = await getConnection();
-  
-      const [result] = await connection.query(
-        `
+        connection = await getConnection();
+
+        const [result] = await connection.query(
+            `
         SELECT * FROM user WHERE email = ?
       `,
-        [email]
-      );
-  
-      if (result.length === 0) {
-        throw generateError('No hay ningún usuario con ese email', 404);
-      }
-  
-      return result[0];
-    } finally {
-      if (connection) connection.release();
-    }
-  };
+            [email]
+        );
 
+        if (result.length === 0) {
+            throw generateError('No hay ningún usuario con ese email', 404);
+        }
+
+        return result[0];
+    } finally {
+        if (connection) connection.release();
+    }
+};
 
 module.exports = {
-    getUserById, createUser, getUserByEmail,
+    getUserById,
+    createUser,
+    getUserByEmail,
 };

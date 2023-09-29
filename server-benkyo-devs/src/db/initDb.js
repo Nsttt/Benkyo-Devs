@@ -10,15 +10,15 @@ async function main() {
 
         console.log('Borrando base de datos');
 
-        await connection.query('DROP DATABASE IF EXISTS benkyo')
+        await connection.query('DROP DATABASE IF EXISTS benkyo');
 
         console.log('Creando base de datos...');
 
-        await connection.query('CREATE DATABASE benkyo')
+        await connection.query('CREATE DATABASE benkyo');
 
         console.log('Usando base de datos...');
 
-        await connection.query('USE benkyo')
+        await connection.query('USE benkyo');
 
         console.log('Creando tabla USER');
 
@@ -101,13 +101,11 @@ async function main() {
                 foreign key(id_user) references user(id) ON UPDATE CASCADE,
                 foreign key(id_deck) references deck(id) ON UPDATE CASCADE
             );        
-        `); 
-
-    } catch(error) {
+        `);
+    } catch (error) {
         console.error(error);
-
     } finally {
-        if(connection) connection.release();
+        if (connection) connection.release();
         process.exit();
     }
 }

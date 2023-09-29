@@ -10,18 +10,27 @@ const { createUser, getUserByEmail, getUserById } = require('../db/users');
 const newUserController = async (req, res, next) => {
     try {
         // const data = req.body;
-        
+
         // console.log(data);
-        
+
         // await validateSchema(newUserSchema, data);
 
         const { name, username, description, email, password } = req.body;
 
-        if(!name || !username || !description || !email || !password) {
-            throw generateError('Debes introducir un email y una contraseña válidos', 400);
+        if (!name || !username || !description || !email || !password) {
+            throw generateError(
+                'Debes introducir un email y una contraseña válidos',
+                400
+            );
         }
 
-        const id = await createUser(name, username, description, email, password);
+        const id = await createUser(
+            name,
+            username,
+            description,
+            email,
+            password
+        );
 
         console.log(id);
 
@@ -29,8 +38,7 @@ const newUserController = async (req, res, next) => {
             status: 'Ok',
             message: `User created with id: ${id}`,
         });
-
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 };
@@ -38,7 +46,7 @@ const newUserController = async (req, res, next) => {
 const getUserController = async (req, res, next) => {
     try {
         const { id } = req.params;
-        
+
         const user = await getUserById(id);
 
         console.log(user);
@@ -47,29 +55,28 @@ const getUserController = async (req, res, next) => {
             status: 'ok',
             data: user,
         });
-
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 };
 
 const editUserController = async (req, res, next) => {
     let connection;
-  
+
     try {
         connection = await getConnection();
 
         const idUserAuth = req.userAuth.id;
-        
+
         const { newUserame, newEmail } = req.body;
-        
+
         if (!newUserame && !newEmail) {
             throw generateError('No has modificado nada', 400);
         }
 
         const [user] = await connection.query(
             `SELECT * FROM user WHERE username = ? OR email = ?`,
-            [newUserame, newEmail]    
+            [newUserame, newEmail]
         );
 
         if (user.length > 0) {
@@ -83,17 +90,21 @@ const editUserController = async (req, res, next) => {
 
         await connection.query(
             `UPDATE user SET email = ?, username = ? WHERE id = ?`,
-            [newEmail || userAuth[0].email, newUserame || userAuth[0].username, idUserAuth]
+            [
+                newEmail || userAuth[0].email,
+                newUserame || userAuth[0].username,
+                idUserAuth,
+            ]
         );
 
         res.send({
             status: 'Ok',
             message: `Datos del usuario con id ${idUserAuth} modificados con éxito`,
         });
-    } catch (error){
+    } catch (error) {
         next(error);
     }
-}
+};
 
 const editUserInfoController = async (req, res, next) => {
     let connection;
@@ -105,8 +116,8 @@ const editUserInfoController = async (req, res, next) => {
 
         const { name, description } = req.body;
 
-        if(!name && !description) {
-            throw generateError('No has modificado nada', 400)
+        if (!name && !description) {
+            throw generateError('No has modificado nada', 400);
         }
 
         const [user] = await connection.query(
@@ -121,7 +132,7 @@ const editUserInfoController = async (req, res, next) => {
                 description || user[0].description,
                 idUserAuth,
             ]
-        )
+        );
 
         res.send({
             status: 'Ok',
@@ -132,7 +143,7 @@ const editUserInfoController = async (req, res, next) => {
     } finally {
         if (connection) connection.release();
     }
-}
+};
 
 const deleteUserController = async (req, res, next) => {
     let connection;
@@ -144,7 +155,7 @@ const deleteUserController = async (req, res, next) => {
 
         const { password } = req.body;
 
-        if(!password) {
+        if (!password) {
             throw generateError('Debes introducir la contraseña', 400);
         }
 
@@ -159,35 +170,34 @@ const deleteUserController = async (req, res, next) => {
             throw generateError('La contraseña no es válida', 401);
         }
 
-        await connection.query(
-            `DELETE FROM user WHERE id = ?`,
-            [idUserAuth]
-        );
+        await connection.query(`DELETE FROM user WHERE id = ?`, [idUserAuth]);
 
         res.send({
             status: 'Ok',
             message: `Usuario con id ${idUserAuth} eliminado`,
-        })
+        });
     } catch (error) {
-        
     } finally {
         if (connection) connection.release();
     }
-}
+};
 
 const loginController = async (req, res, next) => {
     try {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
 
-        if(!email || !password) {
-            throw generateError('Debes introducir un email y una contraseña válidos', 400);
+        if (!email || !password) {
+            throw generateError(
+                'Debes introducir un email y una contraseña válidos',
+                400
+            );
         }
 
         const user = await getUserByEmail(email);
 
-        const validPassword = await bcrypt.compare(password, user.password); 
+        const validPassword = await bcrypt.compare(password, user.password);
 
-        if(!validPassword) {
+        if (!validPassword) {
             throw generateError('Email o contraseña incorrectos', 401);
         }
 
@@ -202,13 +212,12 @@ const loginController = async (req, res, next) => {
             message: 'Sesión iniciada con éxito',
             authToken: token,
         });
-
-    } catch(error) {
+    } catch (error) {
         next(error);
-    } 
+    }
 };
 
-const editPasswordController = async (req, res,next) => {
+const editPasswordController = async (req, res, next) => {
     let connection;
 
     try {
@@ -232,26 +241,29 @@ const editPasswordController = async (req, res,next) => {
         );
 
         if (email !== user[0].email) {
-            throw generateError('El email no coincide con el email del login', 401);
+            throw generateError(
+                'El email no coincide con el email del login',
+                401
+            );
         }
 
         const passwordHash = await bcrypt.hash(newPass, 8);
 
-        await connection.query(
-            `UPDATE user SET password = ? WHERE id = ?`,
-            [passwordHash, idUserAuth,]
-        );
+        await connection.query(`UPDATE user SET password = ? WHERE id = ?`, [
+            passwordHash,
+            idUserAuth,
+        ]);
 
         res.send({
             status: 'ok',
             message: 'Contraseña modificada con éxito',
-        }); 
+        });
     } catch (error) {
         next(error);
     } finally {
         if (connection) connection.release();
-    }   
-}
+    }
+};
 
 const editAvatarController = async (req, res, next) => {
     let connection;
@@ -262,7 +274,9 @@ const editAvatarController = async (req, res, next) => {
         const idUserAuth = req.userAuth.id;
 
         if (!req.files || !req.files.avatar) {
-            throw generateError('Debes indicar el nuevo avatar de usuario'), 400;
+            throw (
+                (generateError('Debes indicar el nuevo avatar de usuario'), 400)
+            );
         }
 
         const [user] = await connection.query(
@@ -280,23 +294,21 @@ const editAvatarController = async (req, res, next) => {
 
         const avatarName = await saveAvatar(req.files.avatar);
 
-        await connection.query(
-            `UPDATE user SET avatar = ? WHERE id = ?`,
-            [avatarName, idUserAuth,]
-        );
+        await connection.query(`UPDATE user SET avatar = ? WHERE id = ?`, [
+            avatarName,
+            idUserAuth,
+        ]);
 
         res.send({
             status: 'Ok',
             message: 'Avatar de usuario modificado con éxito',
         });
     } catch (error) {
-        next(error)
+        next(error);
     } finally {
-        if (connection) connection.release()
+        if (connection) connection.release();
     }
 };
-
-
 
 module.exports = {
     newUserController,

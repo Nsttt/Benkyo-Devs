@@ -13,8 +13,4 @@ router
     .put('/editPassword', userAuth, userController.editPasswordController)
     .put('/editAvatar', userAuth, userController.editAvatarController);
 
-
-
-
-
 module.exports = router;

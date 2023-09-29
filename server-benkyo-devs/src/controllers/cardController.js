@@ -1,10 +1,19 @@
-const { getCardById, getCards, getUserCard, putCorrect, 
-    putFavourite, deleteFavourite, getFailCards, getFavouriteCards, getCorrectCards } = require('../db/cards');
+const {
+    getCardById,
+    getCards,
+    getUserCard,
+    putCorrect,
+    putFavourite,
+    deleteFavourite,
+    getFailCards,
+    getFavouriteCards,
+    getCorrectCards,
+} = require('../db/cards');
 
 const getCardByIdController = async (req, res, next) => {
     try {
         const { id } = req.params;
-        
+
         const card = await getCardById(id);
 
         console.log(card);
@@ -13,7 +22,7 @@ const getCardByIdController = async (req, res, next) => {
             status: `Card with id ${id} ok`,
             data: card,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 };
@@ -29,7 +38,7 @@ const getCardsByLangAndLevel = async (req, res, next) => {
             status: 'ok',
             data: cards,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 };
@@ -44,10 +53,10 @@ const getUserCardController = async (req, res, next) => {
             status: 'ok',
             data: card,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
-}
+};
 
 const setCorrectCard = async (req, res, next) => {
     try {
@@ -59,10 +68,10 @@ const setCorrectCard = async (req, res, next) => {
             status: 'ok',
             data: card,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
-}
+};
 
 const setFavouriteCard = async (req, res, next) => {
     try {
@@ -74,10 +83,10 @@ const setFavouriteCard = async (req, res, next) => {
             status: 'ok',
             data: card,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
-}
+};
 
 const deleteFavouriteCard = async (req, res, next) => {
     try {
@@ -89,10 +98,10 @@ const deleteFavouriteCard = async (req, res, next) => {
             status: 'ok',
             data: card,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
-}
+};
 
 const getFailCardsByUserId = async (req, res, next) => {
     try {
@@ -104,7 +113,7 @@ const getFailCardsByUserId = async (req, res, next) => {
             status: 'ok',
             data: cards,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 };
@@ -119,7 +128,7 @@ const getFavouriteCardsByUserId = async (req, res, next) => {
             status: 'ok',
             data: cards,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 };
@@ -134,22 +143,19 @@ const getCorrectCardsByUserId = async (req, res, next) => {
             status: 'ok',
             data: cards,
         });
-    } catch(error) {
+    } catch (error) {
         next(error);
     }
 };
 
-
-
-
 module.exports = {
-    getCardByIdController, 
-    getCardsByLangAndLevel, 
+    getCardByIdController,
+    getCardsByLangAndLevel,
     getUserCardController,
-    setCorrectCard, 
-    setFavouriteCard, 
+    setCorrectCard,
+    setFavouriteCard,
     deleteFavouriteCard,
-    getFailCardsByUserId, 
+    getFailCardsByUserId,
     getFavouriteCardsByUserId,
     getCorrectCardsByUserId,
 };
